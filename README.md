@@ -2,18 +2,52 @@
 ## Manager
 ### Authentications Route
 
-**Google Authentication**
-> Redirect to /api/auth/google (do not use axios, just use tag to redirect the URL)
-- **URL** : /api/auth/google
-- **Method** : GET
+### Google Authentication
+
+> Redirect to /api/auth/google (do not use axios, just use <a> tag to redirect the URL)
+
+- **URL** : `/api/auth/google`
+- **Method** : `GET`
 - **Auth required** : No
+- **Parameters** : None
+- **Body** : None
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: None
+
+#### Example
+
+````html
+<a href="/api/auth/google">Login with google</a>
+````
+
+
+
 ---
-**Google Authentication Callback**
+
+### Google Authentication Callback
+
 > Callback route of Google authentication (use passport)
 
-- **URL** : /api/auth/google/callback
-- **Method** : GET
+- **URL** : `/api/auth/google/callback`
+- **Method** : `GET`
 - **Auth required** : No
+- **Parameters** : None
+- **Body** : None
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: None
+
 
 ## Group 01
 ## Group 02
