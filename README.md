@@ -8,9 +8,9 @@
 
 - **URL** : `/api/auth/google`
 - **Method** : `GET`
-- **Auth required** : No
-- **Parameters** : None
-- **Body** : None
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
 
 
 
@@ -18,13 +18,9 @@
 
 - **Status code** : `200`
 
-    **Response Body**: None
+  **Response Body**: `None`
 
 #### Example
-
-````html
-<a href="/api/auth/google">Login with google</a>
-````
 
 
 
@@ -36,9 +32,9 @@
 
 - **URL** : `/api/auth/google/callback`
 - **Method** : `GET`
-- **Auth required** : No
-- **Parameters** : None
-- **Body** : None
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
 
 
 
@@ -46,7 +42,7 @@
 
 - **Status code** : `200`
 
-    **Response Body**: None
+    **Response Body**: `None`
 
 
 ## Group 01
