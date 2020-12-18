@@ -86,9 +86,9 @@ Response Body: `roomHistory`
 **Response Body**: `room`
 
 ### historyPlayer
-•	**UR**L : `/api/kahoot/roomHistoryplayer`
-•	**Method **: `POST`
-•	**Auth required **: `Yes`
+•	**URL** : `/api/kahoot/roomHistoryplayer`
+•	**Method**: `POST`
+•	**Auth required**: `Yes`
 •	**Parameters** : `None`
 •	**Body** : `sessionid, point`
 #### Success Response
@@ -101,8 +101,8 @@ Response Body: `roomHistory`
 •	**Parameters** : `None`
 •	**Body** : `sessionid`
 #### Success Response
-•	S**tatus code : `200`
-**Response Body: `player`
+•	**Status code** : `200`
+**Response Body**: `player`
 ### createQuiz
 •	**URL** : `/api/kahoot/createQuiz`
 •	**Method**: `POST`
@@ -122,14 +122,14 @@ Response Body: `roomHistory`
 •	**Status code** : `201`
 **Response Body**: `player`
 ### fetchExaclyRoom
-•	**URL : `/api/kahoot/sessionid/:pin`
-•	**Method : `GET`
-•	**Auth required : `None`
-•	**Parameters : `pin`
+•	**URL** : `/api/kahoot/sessionid/:pin`
+•	**Method** : `GET`
+•	**Auth required** : `None`
+•	**Parameters** : `pin`
 •	**Body** : `None`
 #### Success Response
 •	**Status code** : `200`
-**Response Body: `exactlyRoom`
+**Response Body**: `exactlyRoom`
 ### fetchExaclyRoom
 •	**URL** : `/api/kahoot/sessionid/:pin`
 •	**Method** : `GET`
@@ -149,14 +149,14 @@ Response Body: `roomHistory`
 •	**Status code** : `200`
 **Response Body**: `rank,score`
 ### fetchScoreRankForPlayer
-•	**URL **: `/api/kahoot/getRankScorePlayer/:sessionid`
+•	**URL**: `/api/kahoot/getRankScorePlayer/:sessionid`
 •	**Method**: `GET`
 •	**Auth required** : `None`
 •	**Parameters** : `sessionid`
 •	**Body** : `None`
 #### Success Response
-•	Status code : `200`
-Response Body: `rank,score`
+•	**Status code** : `200`
+**Response Body**: `rank,score`
 ### Upload
 •	**URL** : `/api/kahoot/getRankScorePlayer/:sessionid`
 •	**Method** : `POST`
