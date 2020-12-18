@@ -453,6 +453,425 @@ Response Body: `rooms`
 ## Group 06
 ## Group 07
 ## Group 08
+### Fetch Announcement
+> Get Announcement
+- **URL** : `/grader/ann`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {id: <integer>, title: <varchar>, description: <text>, adminid: <uuid>, isvisible: <boolean>, time: <timestamp>}}
+    ```
+### Fetch All contest
+> Get Allcontest
+- **URL** : `/grader/allcontest`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {conno: <integer>, title: <varchar>, conruletype: <varchar>, description: <text>, starttime: <timestamp>, endtime: <timestamp>, statur: <boolean>, adminid: <uuid>}}
+    ```
+### Fetch contest annoucement
+> Get contestann
+- **URL** : `/grader/contestann`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {coannno: <integer>, title: <varchar>, description: <text>, conid: <integer>, adminid: <uuid>, isvisible: <boolean>, time: <time>}}
+    ```
+ ### Fetch contest All adminlog
+> Get Alladminlog
+- **URL** : `/grader/alladminlog`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {logno: <integer>, title: <varchar>, detail: <text>, timestamp: <timestamp>, adminid: <uuid>}}
+    ```
+### Fetch All question
+> Get Allquestion
+- **URL** : `/grader/allquestion`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {id: <integer>, title: <varchar>, description: <text>, hint: <text>, intputdes: <text>, outputdes: <text>, timelimit: <integer>, memorylimit: <integer>, difficulty: <varchar>, visibility: <boolean>, ruletype: <varchar>, adminid: <uuid>}}
+    ```
+### Fetch All tag
+> Get Alltag
+- **URL** : `/grader/alltag`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {tagid: <integer>, tagname: <varchar>}}
+    ```
+### Fetch contest
+> Get contest
+- **URL** : `/grader/contest`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": integer }
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {conno: <integer>, title: <varchar>, conruletype: <varchar>, description: <text>, starttime: <timestamp>, endtime: <timestamp>, status: <boolean>, adminid: <uuid>}}
+    ```
+### Fetch contest question
+> Get contestquestion
+- **URL** : `/grader/conntestquestion`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "conno": integer }
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {conquestionno: <integer>, id: <integer>, difficulty: <varchar>, visibility: <boolean>, displayName: <varchar>, adminid: <uuid>}}
+    ```
+### Fetch Non existing question
+> Get addexistingquestion
+- **URL** : `/grader/addexistingquestion`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": integer }
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {id: <integer>, title: <varchar>}}
+    ```
+### Fetch question
+> Get question
+- **URL** : `/grader/question`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": integer }
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ data: {id: <integer>, title: <varchar>, description: <text>, hint: <text>, intputdes: <text>, outputdes: <text>, timelimit: <integer>, memorylimit: <integer>, difficulty: <varchar>, visibility: <boolean>, ruletype: <varchar>, adminid: <uuid>}}
+    ```
+### Fetch question sample
+> Get questionsample
+- **URL** : `/grader/questionsample`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": integer }
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ intput: <text>, output: <text>, sampleno: <integer>}}
+    ```
+### Fetch question tag
+> Get questiontag
+- **URL** : `/grader/questiontag`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": `questionid` }
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ tagid: <integer>, tagname: <varchar>}}
+    ```
+### Fetch question test case
+> Get questiontestcase
+- **URL** : `/grader/questiontestcase`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": `questionid` }
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```json{ questionid: <integer>, fileno: <integer>, filepath: <varchar>}}
+    ```
+### Insert question test case
+> Post questiontestcase
+- **URL** : `/grader/questiontestcase`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Insert Annoucement
+> Post Annoucement
+- **URL** : `/grader/cann`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : { "title": String,
+		"description": String,
+		"adminid": String,
+		"visible": boolean;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Insert question
+> Post question
+- **URL** : `/grader/cquestion`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : { "title": String,
+		"description": String,
+		"hint": String,
+		"intputDes": String,
+		"outputDes": String,
+		"timeLimit": Integer,
+		"memoryLimit": Integer,
+		"difficulty": String,
+		"visibility": Boolean,
+		"ruleType": String,
+		"adminid": String,
+		"newTags": Array of String,
+		"existTags": Array of String;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Insert contest exist question
+> Post contestexistquestion
+- **URL** : `/grader/ccontestexistquestion`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : { "conno": Integer,
+		"question": Array of Integer,
+		"adminid": String,
+		"totalquestion": Integer;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Insert question sample
+> Post questionsample
+- **URL** : `/grader/ccontestexistquestion`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : { "questionId": Integer,
+		"samples": Array of String;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Insert contest
+> Post contest
+- **URL** : `/grader/ccontest`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : { "title": String,
+		"conRuleType": String,
+		"description": String,
+		"startTime": String,
+		"endTime": String,
+		"status": String,
+		"adminid": String;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Insert contest annoucement
+> Post contestann
+- **URL** : `/grader/ccontestann`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : { "title": String,
+		"description": String,
+		"conId": Integer,
+		"adminId": String,
+		"isVisible": Boolean;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Insert contest question
+> Post contestquestion
+- **URL** : `/grader/ccontestquestion`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : { "conid": Integer,
+		"questionId": Integer,
+		"adminid": String,
+		"title": String;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+    
+### Update contest
+>Put contest
+- **URL** : `/grader/econtest`
+- **Method** : `PUT`
+- **Auth required** : `Yes`
+- **Body** : { "conno": Integer,
+		"title": String,
+		"conRuleType": String,
+		"description": String,
+		"startTime": String,
+		"endTime": String,
+		"status": String,
+		"adminid": String;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Update contest annoucement
+>Put contestann
+- **URL** : `/grader/econtestann`
+- **Method** : `PUT`
+- **Auth required** : `Yes`
+- **Body** : { "title": String,
+		"description": String,
+		"conId": Integer,
+		"adminId": String,
+		"isVisible": Boolean;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Update question
+>Put question
+- **URL** : `/grader/equestion`
+- **Method** : `PUT`
+- **Auth required** : `Yes`
+- **Body** : { "title": String,
+		"description": String,
+		"hint": String,
+		"intputDes": String,
+		"outputDes": String,
+		"timeLimit": Integer,
+		"memoryLimit": Integer,
+		"difficulty": String,
+		"visibility": Boolean,
+		"ruleType": String,
+		"adminid": String,
+		"id": Integer;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Update question sample
+>Put questionsample
+- **URL** : `/grader/equestionsample`
+- **Method** : `PUT`
+- **Auth required** : `Yes`
+- **Body** : { "questionId": Integer,
+		"sampleNo": Integer,
+		"intput": String,
+		"output": String;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+
+### Update question test case
+>Put questiontestcase
+- **URL** : `/grader/equestiontestcase`
+- **Method** : `PUT`
+- **Auth required** : `Yes`
+- **Body** : { "questionId": Integer,
+		"fileNo": Integer,
+		"filepath": String;
+		}
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Delete question test case
+>Delete questiontestcase
+- **URL** : `/grader/dquestiontestcase`
+- **Method** : `Delete`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": String}
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Delete question sample
+>Delete questionsample
+- **URL** : `/grader/dquestionsample`
+- **Method** : `Delete`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": String}
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Delete question
+>Delete question
+- **URL** : `/grader/dquestion`
+- **Method** : `Delete`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "id": String,
+		"title": String,
+		"adminid": String;}
+#### Success Response
+-	Status code : `200`
+
+### Delete Contest question
+>Delete conquestion
+- **URL** : `/grader/dconquestion`
+- **Method** : `Delete`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : { "questionid": Integer,
+		"conid": String,
+		"title": String,
+		"adminid": String;}
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
 ## Group 09
 ## Group 10
 ## Group 11
