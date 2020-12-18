@@ -887,6 +887,251 @@ Response Body: `none`
 
 ## Group 09
 ## Group 10
+
+### fetch previewQuestion
+	> Get previewQuestion
+
+- **URL** : `/grader/getPreviewQuestion`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"offset":integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "id":int,
+	 "title": String,
+	 "description": String,
+	 "difficulty": String
+	 
+ 	}`
+
+
+
+### fetch PreviewContest
+	> Get PreviewContest
+
+- **URL** : `/grader/getPreviewContest`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `none`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "conno":int,
+	 "title": String,
+	 "conruletype": String,
+	 "starttime": timestamp,
+	 "endtime": timestamp,
+	 "status": Boolean
+	 
+ 	}`
+
+
+
+### fetch ContestDetail
+	> Get ContestDetail
+
+- **URL** : `/grader/getContestDetail`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"contestId":Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+   	{
+	 "conno":int,
+	 "title": String,
+	 "description": String,
+	 "difficulty": String,
+	 "conruletype": String,
+	 "starttime": timestamp,
+	 "endtime": timestamp,
+	 "status": Boolean,
+	 "displayname": String
+ 	}`
+
+
+
+### fetch ContestAnnouncement
+	> Get ContestAnnoucement
+
+- **URL** : `/grader/getContestAnnoucement`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"contestId":integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "coannno":int,
+	 "title": String,
+	 "description": String,
+	 "displayname": String,
+	 "time": Timestamp
+ 	}`
+
+
+
+### fetch ContestProblem
+	> Get ContestProblem
+
+- **URL** : `/grader/getContestProblem`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"contestId":integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "id": Integer,
+	 "title": String,
+	 "conquestionno": Integer,
+	 "difficulty": String,
+	 "description": String
+ 	}`
+
+
+
+### fetch ContestSubmission
+	> Get ContestSubmission
+
+- **URL** : `/grader/getContestSubmission`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"contestId":integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "whentime":Timestamp,
+	 "displayname": String,
+	 "status": Boolean,
+	 "conquestionno": Integer,
+	 "language": String
+	 
+ 	}`
+
+
+
+### fetch Announcement
+	> Get Announcement
+
+- **URL** : `/grader/getAnnouncement`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "id":int,
+	 "title": String,
+	 "time": Timestamp,
+	 "displayname": String
+	 
+ 	}`
+
+
+
+### fetch QuestionTag
+	> Get QuestionTag
+
+- **URL** : `/grader/getQuestionTag`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "tagid": Integer,
+	 "tagname": String
+	 
+ 	}`
+
+
+
+### fetch QuestionByTag
+	> Get QuestionByTag
+
+- **URL** : `/grader/getQuestionByTag`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"tag": String`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "tagid": Integer,
+	 "title": String,
+	 "description": String,
+	 "difficulty": String
+	 
+ 	}`
+	
+
+
+### fetch HomePreviewContest
+	> Get HomePreviewContest
+
+- **URL** : `/grader/getHomePreviewContest`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `
+    	{
+	 "conno": Integer,
+	 "title": String,
+	 "description": String,
+	 "conruletype": String,
+	 "starttime": Timestamp,
+	 "endtime": Timestamp
+ 	}`
+
 ## Group 11
 ## Group 12
 
