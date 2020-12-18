@@ -46,6 +46,276 @@
 
 
 ## Group 01
+
+### Fetch instructor availability
+> Get instructor availability days and times
+- **URL** : `/instructor/availabilities`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Headers** : `Token`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```
+    {
+        "availabilities": [[int],[int],[int],[int],[int]],
+        "price": int
+    }
+    ```
+
+### Update instructor availability
+> Update/Insert instructor availability days and times
+- **URL** : `/instructor/availabilities`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** :
+    ```
+    {
+        "availabilities": [[int],[int],[int],[int],[int]],
+        "price": int
+    }
+    ```
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Fetch instructor information
+> Get List of Instructor who register to be a Private Tutor
+- **URL** : `/instructor/list`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+    ```
+    {
+    "instructors": [
+    {
+            "id",
+            "name": String,
+            "info": String,
+            "rating": decimal,
+            "ratingCount": int,
+    }
+    ],
+    }
+    ```
+### Fetch Selected Instructor's information
+> Get instructor's information
+- **URL** : `/instructor/info`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** :
+```
+ {
+	 "id": `instructorId`
+ }
+```
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```
+{
+ "instructor": {
+		"id",
+		"name": String,
+		"info": String,
+		"text": String,
+		"rating": decimal,
+		"ratingCount": int,
+		"price": decimal
+   }
+}
+```
+### Fetch Selected Instructor available times
+- **URL** : `/instructor/availability`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** :
+```
+ {
+	 "id": `instructorId`,
+	 "dates": `YYYY-MM-DD`
+ }
+```
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```
+{
+ "times": {
+	 [ int ]
+   }
+}
+```
+
+### Fetch List of Appointments
+> Get List of Appointments that student appointed
+- **URL** : `/student/appointments`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```
+{
+ "appointments": [
+   {
+		"id",
+		"name": String,
+		"info": String,
+		"date": `DD MMM YYYY`,
+		"startTime": 'HH:MM',
+		"endTime": 'HH:MM',
+		"isAgree": 'Approved'/'Rejected'/'Pending'
+   }
+],
+}
+```
+
+### Insert student appointment
+> Insert Appointment that student appointed
+- **URL** : `/student/appointments`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** :
+```
+ {
+	 "id",
+	 "startTime": timestamp,
+	 "endTime": timestamp,
+	 "price": int,
+	 "members": [{ "id", "name"}]
+ }
+```
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Fetch instructor's appointment
+> Get List of Appointments for instructor
+- **URL** : `/instructor/appointments`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```
+{
+ "appointment": [
+   {
+		"appointmentID",
+		"id": studentID,
+		"name": String,
+		"date": `[DD, MM, YYYY]`,
+		"startTime": int,
+		"endTime": int,
+		"status": 'Approved'/'Rejected'/'Pending',
+		"members":[{"id","name"}]
+   }
+],
+}
+```
+### Approve student's Appointment
+> Approve or Reject student's Appointment
+- **URL** : `/instructor/appointments`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** :
+```
+ {
+	 "appointmentID",
+	 "status": boolean
+ }
+```
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Fetch appointment's rating
+> Get List of instructor's reviews
+- **URL** : `/instructor/review`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** :
+```
+ {
+	 "id": `instructorId`
+ }
+```
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```
+{
+	"rating", [{
+	  "score": int,
+	  "desc": String,
+	  "name": String,
+	  "date": `YYYYMMDD`
+	}]
+}
+```
+
+### Insert rating of appointment
+> Student rate instructor in appointment
+- **URL** : `/appointment/review`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** :
+```
+ {
+	  "id": AppointmentID,
+	  "score": int,
+	  "desc": String,
+}
+```
+- **Params** : `none`
+#### Success Response
+-	Status code : `200`
+Response Body: `none`
+
+### Search students name
+> Searching student by first name or last name ( limit 5 )
+- **URL** : `/utils/id`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** :
+```
+ {
+	 "name": String,
+     "id": UserID
+ }
+```
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```
+{
+ "students": [
+   {
+		"id",
+		"name": String
+   }
+],
+}
+```
+
 ## Group 02
 ## Group 03
 ### FetchRoom
