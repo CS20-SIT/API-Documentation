@@ -463,7 +463,7 @@ Response Body: `rooms`
 #### Success Response
 -	Status code : `200`
 Response Body: 
-    ```json{ data: {id: <integer>, title: <varchar>, description: <text>, adminid: <uuid>, isvisible: <boolean>, time: <timestamp>}}
+    ```{ data: {id: <integer>, title: <varchar>, description: <text>, adminid: <uuid>, isvisible: <boolean>, time: <timestamp>}}
     ```
 ### Fetch All contest
 > Get Allcontest
