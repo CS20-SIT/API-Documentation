@@ -187,6 +187,244 @@ Response Body: `roomHistory`
 ## Group 10
 ## Group 11
 ## Group 12
+
+### showForum
+
+> Show all forum
+
+- **URL** : `/api/forum`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {forumid: <integer>, titlethread: <varchar>, userid: <uuid>, displayname: <varchar>, posttime: <timestamp>, subtypename: <varchar>, typename: <varchar>}}```
+    
+    
+    
+### getCategory
+
+> Show all category
+
+- **URL** : `/api/forum/category`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+    **Response Body**: ``` json{ data: {typename: <varchar>} }```
+    
+    
+    
+### getSubCategory
+
+> Show all sub category
+
+- **URL** : `/api/forum/subcategory`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {typename: <varchar>, subtypename: <varchar>}}```
+    
+    
+### selectForum
+
+> Show information of each forums
+
+- **URL** : `/api/forum/:id`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `id: <integer>`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ```json{ data : {forumid: <integer>, titlethread: <varchar>, userid: <uuid>, displayname: <varchar>, posttime: <timestamp>, subcategoryiid: <integer>, content: <text>, isdelete: <boolean>, likes:<bigint>, comments:<bigint>, is_like: <uuid>, answerno: <integer>, anstime: <timestamp>, answer: <text> }}```
+    
+    
+    
+ ### setLike
+
+> show that is this forum liked ?
+
+- **URL** : `/api/forum/like/:id`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `forumid : <integer>`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `201`
+
+    **Response Body**: `None`
+    
+    
+    
+### createComment
+
+> Create new comment
+
+- **URL** : `/api/forum/comment`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : ` {id: <uuid>, comment: <string> }`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {forumid: <integer>, answerno: <integer>, userid: <uuid>, anstime: <timestamp>, answer: <text>}}```
+    
+    
+    
+### setForum
+
+> Create new forum
+
+- **URL** : `/api/forum/create`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{title: <varchar>, comment: <string> }`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {userid: <uuid>, titlethread: <varchar>, subcategoryiid: <integer>, content: <text>}}```
+    
+    
+    
+### selectRoom
+
+> Show all forum in room which you select
+
+- **URL** : `/api/forum/room/:roomname`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `roomname: <varchar>`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ```json{ data : {forumid: <integer>, titlethread: <varchar>, userid: <uuid>, displayname: <varchar>, posttime: <timestamp>, subtypename: <varchar>, typename: <varchar>, categorytypeid: <integer>, content: <text>, isdelete: <boolean>, likes:<bigint>, comments:<bigint>, is_like: <uuid>, answerno: <integer>, anstime: <timestamp>, answer: <text> }}```
+    
+    
+    
+ ### deleteComment
+
+> Delete comment
+
+- **URL** : `/api/forum/comment/:id`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `forumid : <integer>`
+- **Body** : `{answerno: <integer> }`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+    
+    
+### deleteForum
+
+> Delete forum
+
+- **URL** : `/api/forum/:id`
+- **Method** : `DELETE`
+- **Auth required** : `Yes`
+- **Parameters** : `forumid : <integer>`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+    
+    
+### editForum
+
+> Edit forum
+
+- **URL** : `/api/forum/:id`
+- **Method** : `PUT`
+- **Auth required** : `Yes`
+- **Parameters** : `forumid : <integer>`
+- **Body** : `{content: <text>, titlethread: <varchar>, oldcontent: <text> }`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+  
+  
+### searchForum
+
+> Search forum
+
+- **URL** : `/api/forum/search`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{search: <string> }`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {forumid: <integer>, titlethread: <varchar>, userid: <uuid>, displayname: <varchar>, posttime: <timestamp>, subtypename: <varchar>, typename: <varchar>,likes:<bigint>, comments:<bigint>, is_like: <uuid>}}```
+    
+    
 ## Group 13
 ## Group 14
 ## Group 15
