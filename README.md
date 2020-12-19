@@ -2000,7 +2000,17 @@ Response Body: `none`
     
 	```json
 	{
-	   "*"
+	   "eventid": <Integer>,
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "detail": String,
+	   "place": String,
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>,
+	   "adminid": <Integer>
 	}
 	```
 
@@ -2021,7 +2031,15 @@ Response Body: `none`
     
 	```json
 	{
-	   "*"
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "datail": String,
+	   "place": String,
+	   "userid": <Integer>,
+	   "courseid": <Integer>
 	}
 	```
 	
@@ -2064,7 +2082,18 @@ Response Body: `none`
     
 	```json
 	{
-	   "*"
+	   "eventid": <Integer>,
+	   "courseid": <Integer>,
+	   "instructorid": <Integer>,
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "detail": String,
+	   "place": String,
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>
 	}
 	```
 
@@ -2107,7 +2136,17 @@ Response Body: `none`
     
 	```json
 	{
-	   "*"
+	   "eventid": <Integer>,
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "detail": String,
+	   "place": String,
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>,
+	   "adminid": <Integer>
 	}
 	```
 	
