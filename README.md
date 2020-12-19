@@ -2114,8 +2114,8 @@ Response Body: `none`
     
 	```json
 	{
-	   "courseid" = <Integer>,
-	   "coursename" = String
+	   "courseid": <Integer>,
+	   "coursename": String
 	}
 	```
 
