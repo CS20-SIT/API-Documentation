@@ -1982,4 +1982,212 @@ Response Body: `none`
     
 ## Group 13
 ## Group 14
+
+### Fetch Global Event
+> Get the info of the global event
+
+- **URL** : `/api/event/getGlobalEvent`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "*"
+	}
+	```
+
+### Fetch Course Event
+> Get the info of the course event
+
+- **URL** : `/api/event/getCourseEvent`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "*"
+	}
+	```
+	
+### Fetch Event In Month Year
+> Get the info of the month and year event
+
+- **URL** : `/api/event/getEventInMonthYear`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+
+### Fetch Event
+> Get the info of the event
+
+- **URL** : `/api/event/getEvent`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "*"
+	}
+	```
+
+### Fetch Student Course
+> Get the info of the course who student enrolled
+
+- **URL** : `/api/event/getMyCourse`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "courseid" = <Integer>,
+	   "coursename" = String
+	}
+	```
+
+### Fetch Admin Event
+> Get the info of the admin event
+
+- **URL** : `/api/event/getAdminEvent`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "*"
+	}
+	```
+	
+### Create Course Event by Instructor
+> Create Course Event
+
+- **URL** : `/api/event/createEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String,
+		"userid": <Integer>,
+		"courseid": <Integer>
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Create Global Event by Admin
+> Create Global Event
+
+- **URL** : `/api/event/createAdminEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String,
+		"adminid": <Integer>
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+	
+### Delete Global Event by Admin
+> Delete Global Event
+
+- **URL** : `/api/event/dAdminEvent`
+- **Method** : `DELETE`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "id": String
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Delete Course Event by Instructor
+> Delete Course Event
+
+- **URL** : `/api/event/dEvent`
+- **Method** : `DELETE`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "id": String
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+	
 ## Group 15
