@@ -748,7 +748,7 @@ Response Body: `none`
 #### Success Response
 -	Status code : `200`
 Response Body: `none`
-    
+   
 ### Update contest
 >Put contest
 - **URL** : `/grader/econtest`
@@ -888,36 +888,51 @@ Response Body: `none`
 ## Group 09
 ## Group 10
 
-### fetch previewQuestion
-	> Get previewQuestion
+### Fetch question preview
+> Get the info of the question
 
-- **URL** : `/grader/getPreviewQuestion`
+- **URL** : `/api/grader/getPreviewQuestion`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"offset":integer`
+- **Auth required** : `No`
+- **Parameters** : `"offset" : Integer`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "id":int,
-	 "title": String,
-	 "description": String,
-	 "difficulty": String
-	 
- 	}`
+    **Response Body**:
+    
+	```json
+	{
+	   "id" : Integer,
+	   "title" : String,
+	   "description" : String,
+	   "difficulty" : String
+	}
+	```
 
+#### Error Response
 
+- **Status code** : `400`
 
-### fetch PreviewContest
-	> Get PreviewContest
+  **Response Error** :
 
-- **URL** : `/grader/getPreviewContest`
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch  total number of questions
+
+> Get the total number of questions
+
+- **URL** : `/api/grader/countAllQuestion`
 - **Method** : `GET`
-- **Auth required** : `Yes`
+- **Auth required** : `No`
 - **Parameters** : `none`
 - **Body** : `None`
 
@@ -925,126 +940,282 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "conno":int,
-	 "title": String,
-	 "conruletype": String,
-	 "starttime": timestamp,
-	 "endtime": timestamp,
-	 "status": Boolean
-	 
- 	}`
+    **Response Body**:
+    
+	```json
+	{
+	   "count" : Integer
+	}
+	```
 
+#### Error Response
 
+- **Status code** : `400`
 
-### fetch ContestDetail
-	> Get ContestDetail
+  **Response Error** :
 
-- **URL** : `/grader/getContestDetail`
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch announcement preview
+>  Get info of the announcement
+
+- **URL** : `/api/grader/getAnnouncement`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":Integer`
+- **Auth required** : `No`
+- **Parameters** : `none`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-   	{
-	 "conno":int,
-	 "title": String,
-	 "description": String,
-	 "difficulty": String,
-	 "conruletype": String,
-	 "starttime": timestamp,
-	 "endtime": timestamp,
-	 "status": Boolean,
-	 "displayname": String
- 	}`
+    **Response Body**: 
 
+    ```json
+    [
+    	{
+        	"id" : Integer,
+        	"title" : String,
+        	"time" : Timestamp,
+        	"displayname" : String
+        }
+    ]
+    ```
 
+#### Error Response
 
-### fetch ContestAnnouncement
-	> Get ContestAnnoucement
+- **Status code** : `400`
 
-- **URL** : `/grader/getContestAnnoucement`
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch contest preview
+
+>  Get info of the the contest
+
+- **URL** : `/api/grader/getPreviewContest`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":integer`
+- **Auth required** : `No`
+- **Parameters** : `none`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "coannno":int,
-	 "title": String,
-	 "description": String,
-	 "displayname": String,
-	 "time": Timestamp
- 	}`
+  **Response Body**: 
 
+  ```json
+  [
+  	{
+      	"conno": Integer,
+      	"title": String,
+      	"conruletype": String,
+      	"starttime": Timestamp,
+      	"endtime": Timestamp,
+      	"status": Boolean
+      }
+  ]
+  ```
 
+#### Error Response
 
-### fetch ContestProblem
-	> Get ContestProblem
+- **Status code** : `400`
 
-- **URL** : `/grader/getContestProblem`
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch detail of the contest
+
+>  Get the detail of the contest
+
+- **URL** : `/api/grader/getContestDetail`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":integer`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "id": Integer,
-	 "title": String,
-	 "conquestionno": Integer,
-	 "difficulty": String,
-	 "description": String
- 	}`
+  **Response Body**: 
 
+  ```json
+  {
+      "conno": Integer,
+      "title": String,
+      "description": String,
+      "conruletype": String,
+      "starttime": String,
+      "endtime": String,
+      "status": Boolean,
+      "displayname": String
+  }
+  ```
 
+#### Error Response
 
-### fetch ContestSubmission
-	> Get ContestSubmission
+- **Status code** : `400`
 
-- **URL** : `/grader/getContestSubmission`
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch the contest announcement
+
+> Get the all visible announcements in the contest
+
+- **URL** : `/api/grader/getContestAnnouncement`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":integer`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
+    **Response Body**:
+
+    ```json
+    [
     	{
-	 "whentime":Timestamp,
-	 "displayname": String,
-	 "status": Boolean,
-	 "conquestionno": Integer,
-	 "language": String
-	 
- 	}`
+        	"coannno": Integer,
+        	"title": String,
+        	"description": String,
+        	"displayname": String,
+        	"time": Timestamp
+    	}
+    ]
+    ```
 
+#### Error Response
 
+- **Status code** : `400`
 
-### fetch Announcement
-	> Get Announcement
+  **Response Error** :
 
-- **URL** : `/grader/getAnnouncement`
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch contest problems
+> Get all the problem in the particular contest
+
+- **URL** : `/api/grader/getContestProblem`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+
+    ```json
+    {
+     	"id" : Integer,
+     	"title" : String,
+     	"conquestionno" : int,
+     	"difficulty" : String,
+        "description" : String
+    }
+    ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch contest submission
+> Get all of the problem submissions in a particular contest
+
+- **URL** : `/api/grader/getContestSubmission`
 - **Method** : `GET`
 - **Auth required** : `Yes`
+- **Parameters** : `"contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	[
+		{
+	    	"whentime" : Timestamp,
+	    	"displayname" : String,
+	    	"status" : String,
+	    	"conquestionno" : int,
+	    	"language" : String
+	  	}
+	]
+	```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch question tags
+> Get all of the question tags 
+
+- **URL** : `/api/grader/getQuestionTag`
+- **Method** : `GET`
+- **Auth required** : `No`
 - **Parameters** : `None`
 - **Body** : `None`
 
@@ -1052,45 +1223,38 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "id":int,
-	 "title": String,
-	 "time": Timestamp,
-	 "displayname": String
-	 
- 	}`
+    **Response Body**:
+    
+	```json
+	[
+		{
+	    	"tagid" : Integer,
+	    	"tagname" : String
+		}
+	]
+	```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
 
 
 
-### fetch QuestionTag
-	> Get QuestionTag
+### Fetch Question by tag
 
-- **URL** : `/grader/getQuestionTag`
+	> Get the questions by tag
+
+- **URL** : `/api/grader/getQuestionByTag`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `None`
-- **Body** : `None`
-
-#### Success Response
-
-- **Status code** : `200`
-
-    **Response Body**: `
-    	{
-	 "tagid": Integer,
-	 "tagname": String
-	 
- 	}`
-
-
-
-### fetch QuestionByTag
-	> Get QuestionByTag
-
-- **URL** : `/grader/getQuestionByTag`
-- **Method** : `GET`
-- **Auth required** : `Yes`
+- **Auth required** : `No`
 - **Parameters** : `"tag": String`
 - **Body** : `None`
 
@@ -1098,23 +1262,38 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "tagid": Integer,
-	 "title": String,
-	 "description": String,
-	 "difficulty": String
-	 
- 	}`
-	
+    **Response Body**:
+    
+	```json
+	{
+	   "tagid" : Integer,
+	   "title" : String,
+	   "description" : String,
+	   "difficulty" : String
+	}
+	```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
 
 
-### fetch HomePreviewContest
-	> Get HomePreviewContest
+### Fetch preview of the contest home page
+> Get the overview details of the contest 
 
-- **URL** : `/grader/getHomePreviewContest`
+- **URL** : `/api/grader/getHomePreviewContest`
 - **Method** : `GET`
-- **Auth required** : `Yes`
+- **Auth required** : `No`
 - **Parameters** : `None`
 - **Body** : `None`
 
@@ -1122,15 +1301,444 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "conno": Integer,
-	 "title": String,
-	 "description": String,
-	 "conruletype": String,
-	 "starttime": Timestamp,
-	 "endtime": Timestamp
- 	}`
+    **Response Body**:
+
+    ```json
+    {
+     	"conno": Integer,
+     	"title": String,
+     	"description": String,
+     	"conruletype": String,
+    	"starttime": Timestamp,
+    	"endtime": Timestamp
+    }
+    ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+### Fetch announcement by id
+
+> Get the announcement details from the id of the announcement
+
+- **URL** : `/api/grader/getAnnouncementById`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+   	"conno": Integer,
+   	"title": String,
+   	"description": String,
+   	"conruletype": String,
+  	"starttime": Timestamp,
+  	"endtime": Timestamp
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  top six of OI ranking
+
+> Get the first six people from OI ranking
+
+- **URL** : `/api/grader/getOIRankingTopSix`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `none`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+    {
+      "name" : String,
+      "totalcorrect" : Integer,
+      "avatar" : URL
+    }
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  top six of ACM Ranking
+
+> Get the first six people from OI ranking
+
+- **URL** : `/api/grader/getACMRankingTopSix`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `none`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+      {
+          "name": String,
+      	"totalcorrect": Integer,
+      	"avatar": URL
+      }
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  contest announcement detail
+
+> Get the detail of the announcement in the cotests
+
+- **URL** : `/api/grader/getContestAnnouncementDetail`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer, "contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "coannno": Integer,
+      "title": String,
+      "description": String,
+      "displayname": String,
+      "time": Timestamp
+    }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  contest question details (Unfinish)
+
+> Get the details of the problem in the contest
+
+- **URL** : `/api/grader/getContestQuestionDetail`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer, "contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "conquestionno": Integer,
+      "id": Integer,
+      "title": String,
+      "description": String,
+      "hint": String,
+      "intputdes": String,
+      "outputdes": String,
+      "timelimit": Integer,
+      "memorylimit": Integer,
+      "difficulty": String,
+      "ruletype": String,
+      "displayname": String
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  question test cases
+
+> Get all of the test cases of the question
+
+- **URL** : `/api/grader/getQuestionTestCase`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+      {
+      	"questionid": Integer,
+      	"sampleno": Integer,
+      	"intput": String,
+      	"output": String
+  	}
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  question details
+
+> Get the details of the problem that is not in the contest
+
+- **URL** : `/api/grader/getQuestionDetail`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "id": Integer,
+      "title": String,
+      "description": String,
+      "hint": String,
+      "intputdes": String,
+      "outputdes": String,
+      "timelimit": Integer,
+      "memorylimit": Integer,
+      "difficulty": String,
+      "ruletype": String,
+      "displayname": String
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  question submissions
+
+> Get all of the submissions of that problem
+
+- **URL** : `/api/grader/getQuestionSubmission`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"questionId" : Integer, "userId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "attemptid": Integer,
+      "userid": String,
+      "questionid": Integer,
+      "attempno": Integer,
+      "score": Integer,
+      "status": String,
+      "time": Integer,
+      "memory": Integer,
+      "language": String,
+      "code": String,
+      "whentime": Timestamp
+    },
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  number of all questions with tag
+
+> Get the number of all questions that have that tag
+
+- **URL** : `/api/grader/getCountQuestionByTag`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"tag" : String`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+   	"count" : Integer	
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Submit the question attempt
+
+> Sent the code to the online compiler.
+
+- **URL** : `/api/grader/submission`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    "source_code": <base64 encode source-code>,
+    "problem_id": <Integer>,
+    "language": <Java|C|C++|Python3|Python2>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+    "attemptId" : Integer
+    "tokens" : String <base64>
+  }
+  ```
+
+
 
 ## Group 11
 ## Group 12
@@ -1351,8 +1959,8 @@ Response Body: `none`
 
     **Response Body**: `None`
     
-  
-  
+
+
 ### searchForum
 
 > Search forum
