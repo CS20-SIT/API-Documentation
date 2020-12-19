@@ -1981,6 +1981,449 @@ Response Body: `none`
     
     
 ## Group 13
+
+### getCategories
+
+> Get Categories
+
+- **URL** : `/api/package/getCategories`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ```{cateid: <integer>, cate_name: <varchar>}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+    
+
+### createPackage
+
+> Create package
+
+- **URL** : `/api/package/createPackage`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{packagename: <char>, instructorid: <uuid> ,discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer>, packageid: <uuid>,  courseid: <uuid>}`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+  
+  
+  
+### deletePackage
+
+> Delete package
+
+- **URL** : `/api/package/delete/package`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{packageid: <uuid>}`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getPackage
+
+> Get package
+
+- **URL** : `/api/package/getPackage`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ data: {packageid: <uuid>, packagename: <char>, instructorid: <uuid> ,discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer> }}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getAllPackage
+
+> Get all package
+
+- **URL** : `/api/package/getAllPackage`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{instructorid: <uuid>, userid: <uuid> ,packagename: <char>, detail: <varchar>, image: <varchar>, discount: <numeric>, ispublic: <boolean>, cateid: <integer>, firstname: <varchar>, lastname: <varchar> }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getCoursesOfCreatingPackage
+
+> Get course of creating package
+
+- **URL** : `/api/package/getCoursesOfCreatingPackage`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{courseid: <uuid> , coursename: <varchar>, coursepicture: <varchar>, price: <numeric>,totalPrice: {price: <numeric>}}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### upload
+
+> Upload package picture
+
+- **URL** : `/api/package/uploadPackagePic`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getCourses
+
+> Get course 
+
+- **URL** : `/api/package/courses`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{courseid: <uuid> , coursename: <varchar>, coursepicture: <varchar>, price: <numeric>, firstname: <varchar>, lastname: <varchar>}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getCourseFromIds
+
+> Get course from ID
+
+- **URL** : `/api/package/coursesFromIds`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{courseid: <uuid> , coursename: <varchar>, price: <numeric>}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+  
+  
+  
+### getInstructorPackage
+
+> Get instructor package
+
+- **URL** : `/api/package/getInstructorPackage`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{price: <numeric>, packageid: <uuid>, packagename: <char>, discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer>, cate_name: <varchar> }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getNumCourses
+
+> Get number of courses
+
+- **URL** : `/api/package/numCourses`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{count: {coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>} }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### publishPackage
+
+> Show publish package
+
+- **URL** : `/api/package/publishPackage`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{packageid: <uuid>}`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{packages: {ispublic: <boolean>} }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getAllCourse
+
+> Get all course
+
+- **URL** : `/api/course/getAllCourse`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>, instructorid: <uuid>, userid: <uuid> , isverified: <boolean>, createat: <timestamp>, approveat: <timestamp>, approver: <uuid>, avatar: <varchar>, wallpaper: <varchar>, biography: <varchar>, firstname: <varchar>, lastname: <varchar>, birthdate: <date>, initial: <varchar>, phoneno: <varchar>, display: <varchar>, bio: <varchar>,updateat: <timestamp>,cataid: <integer>, cataname: <varchar>, courseid: <uuid>}```
+    
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** : `None`
+
+
+
+### searchCourse
+
+> Search course
+
+- **URL** : `/api/course/search`
+- **Method** : `POST`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ data: {coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>}}```
+    
+#### Error Response
+
+- **Status code** : `404`
+
+  **Response Error** : `None`
+  
+  
+  
+### getCourse
+
+> Get course
+
+- **URL** : `/api/course/getCourse`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ firstname: <varchar>, lastname: <varchar>, coursename: <varchar>, coursepicture: <varchar>,  price: <numeric>, ownerid: <uuid>, courseid: <uuid>}```
+    
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** : `None`
+  
+  
+ 
+  
+### getCategory
+
+> Get category
+
+- **URL** : `/api/course/getCategory`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ category: {cataname: <varchar>}}```
+
+
+
+### searchCategory
+
+> Search category of course
+
+- **URL** : `/api/course/categorySearch/:cataname`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `{cataname: <varchar>}`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>, instructorid: <uuid>, userid: <uuid> , isverified: <boolean>, createat: <timestamp>, approveat: <timestamp>, approver: <uuid>, avatar: <varchar>, wallpaper: <varchar>, biography: <varchar>, firstname: <varchar>, lastname: <varchar>, birthdate: <date>, initial: <varchar>, phoneno: <varchar>, display: <varchar>, bio: <varchar>,updateat: <timestamp>,cataid: <integer>, cataname: <varchar>, courseid: <uuid>}```
+    
+#### Error Response
+
+- **Status code** : `404`
+
+  **Response Error** : `None`
+
+
+
+### createReview
+
+> Create review
+
+- **URL** : `/api/review/create`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{userid: <uuid>, courseid: <uuid>, reviewrate: <numeric>, comment: <char>, date: <date>}`
+
+
+
+- **Status code** : `201`
+
+    **Response Body**: `None`
+
+
+
+### getReview
+
+> Get review
+
+- **URL** : `/api/review`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ reviewrate: <numeric>, count:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> }, data:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> } }```
+
+
+
 ## Group 14
 
 ### Fetch Global Event
