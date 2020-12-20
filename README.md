@@ -2,6 +2,469 @@
 ## Manager
 ### Authentications Route
 
+### User Login
+
+> Authenticate the use and return the cookie back
+
+- **URL** : `/api/auth/login`
+
+- **Method** : `POST`
+
+- **Auth required** : `No`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    	email: <String>
+    	password: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Cookie**: `jwt`
+
+  **Response Body**: 
+  
+  ```json
+  { 
+      success: true, 
+      isVerify: <true|false> 
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: 'Email or password is incorrect'
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### User Registration
+
+> Register the new user
+
+- **URL** : `/api/auth/register`
+
+- **Method** : `POST`
+
+- **Auth required** : `No`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+      email: <String>
+      password: <String>
+      firstname: <String>
+      lastname: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Cookie**: `jwt`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: 'Email is used'
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### User Profile
+
+> Get user profile
+
+- **URL** : `/api/auth/profile`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Cookie**: `jwt`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "userid": <String>,
+      "firstname": "<String>,
+      "lastname": <String>,
+      "birthdate": <String>,
+      "initial": <String>,
+      "phoneno": <String>,
+      "displayname": <String>,
+      "bio": <String>,
+      "avatar": <String of URL>,
+      "createat": <String>,
+      "updateat": <String>,
+      "id": <String>,
+      "role": <String>,
+      "email": <String>,
+      "verify": <boolean>
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `401`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "success": false,
+      "error": "Unauthorize"
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### User Email Verification
+
+> Verify the email that user input
+
+- **URL** : `/api/auth/verify/:token`
+
+- **Method** : `GET`
+
+- **Auth required** : `NO`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: `None but redirect to successful verification page` 
+
+#### Error Response
+
+- **Status code** : `200`
+
+  **Response Body**:` None but redirect to error verification page`
+
+---
+
+### User Logout
+
+> Logout user from the system
+
+- **URL** : `/api/auth/logout`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+  
+#### Error Response
+- **Status code** : `401`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "success": false,
+      "error": "Unauthorize"
+  }
+  ```
+
+---
+
+### Admin Registration
+
+> Register the new admin
+
+- **URL** : `/api/auth/admin/register`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    	email: <String>
+    	password: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: 'Username is used'
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Login
+
+> Let admin login to the system
+
+- **URL** : `/api/auth/admin/login`
+
+- **Method** : `POST`
+
+- **Auth required** : `NO`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    	email: <String>
+    	password: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <'User does not exist' | 'Password is not correct'>
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Profile
+
+> Return infomation of that admin
+
+- **URL** : `/api/auth/admin/profile`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "displayname": <String>,
+      "firstname": <String>,
+      "lastname": <String>,
+      "avatar": <String>,
+      "role": <String>
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Logout
+
+> Logout admin from the system
+
+- **URL** : `/api/auth/admin/logout`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+#### Error Response
+- **Status code** : `401`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "success": false,
+      "error": "Unauthorize"
+  }
+  ```
+---
+
 ### Google Authentication
 
 > Redirect to /api/auth/google (do not use axios, just use <a> tag to redirect the URL)
@@ -12,17 +475,11 @@
 - **Parameters** : `None`
 - **Body** : `None`
 
-
-
 #### Success Response
 
 - **Status code** : `200`
 
   **Response Body**: `None`
-
-#### Example
-
-
 
 ---
 
@@ -35,8 +492,6 @@
 - **Auth required** : `No`
 - **Parameters** : `None`
 - **Body** : `None`
-
-
 
 #### Success Response
 
@@ -2005,7 +2460,7 @@ Response Body: `none`
 - **Status code** : `500`
 
   **Response Error** : `None`
-    
+  
 
 ### createPackage
 
@@ -2344,7 +2799,7 @@ Response Body: `none`
   **Response Error** : `None`
   
   
- 
+
   
 ### getCategory
 
