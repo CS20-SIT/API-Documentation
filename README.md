@@ -3410,9 +3410,31 @@ Response Body: `none`
 	```
 	
 ### Fetch Event In Month Year
-> Get the info of the month and year event
+> Search event by month and year
 
 - **URL** : `/api/event/getEventInMonthYear`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+
+### Fetch Event In Month Year
+> Search event by month and year by Admin
+
+- **URL** : `/api/event/getAdminEventInMonthYear`
 - **Method** : `GET`
 - **Auth required** : `Yes`
 - **Parameters** : `None`
@@ -3436,8 +3458,8 @@ Response Body: `none`
 
 - **URL** : `/api/event/getEvent`
 - **Method** : `GET`
-- **Auth required** : `No`
-- **Parameters** : `None`
+- **Auth required** : `Yes`
+- **Parameters** : `"eventid": <Integer>`
 - **Body** : `None`
 
 #### Success Response
@@ -3468,7 +3490,7 @@ Response Body: `none`
 
 - **URL** : `/api/event/getMyCourse`
 - **Method** : `GET`
-- **Auth required** : `No`
+- **Auth required** : `Yes`
 - **Parameters** : `None`
 - **Body** : `None`
 
@@ -3491,7 +3513,7 @@ Response Body: `none`
 - **URL** : `/api/event/getAdminEvent`
 - **Method** : `GET`
 - **Auth required** : `Yes`
-- **Parameters** : `None`
+- **Parameters** : `"eventid": <Integer>`
 - **Body** : `None`
 
 #### Success Response
@@ -3522,7 +3544,7 @@ Response Body: `none`
 - **URL** : `/api/event/getEventbyDate`
 - **Method** : `GET`
 - **Auth required** : `Yes`
-- **Parameters** : `None`
+- **Parameters** : `"date": date`
 - **Body** : `None`
 
 #### Success Response
@@ -3534,28 +3556,6 @@ Response Body: `none`
 	```json
 	{
 	   "title": String,
-	   "startdate": date,
-	   "enddate": date
-	}
-	```
-	
-### Fetch Overview Each Day Event by Admin
-> Get the info of the overview each day event by admin
-
-- **URL** : `/api/event/getAdminEventInMonthYear`
-- **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `None`
-- **Body** : `None`
-
-#### Success Response
-
-- **Status code** : `200`
-
-    **Response Body**:
-    
-	```json
-	{
 	   "startdate": date,
 	   "enddate": date
 	}
