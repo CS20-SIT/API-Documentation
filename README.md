@@ -846,7 +846,7 @@ Response Body: `rooms`
 #### Success Response
 -	**Status code** : `201`
 **Response Body**: `player`
-### fetchExaclyRoom
+### fetchExactlyRoom
 -	**URL** : `/api/kahoot/sessionid/:pin`
 -	**Method** : `GET`
 -	**Auth required** : `None`
@@ -855,7 +855,7 @@ Response Body: `rooms`
 #### Success Response
 -	**Status code** : `200`
 **Response Body**: `exactlyRoom`
-### fetchExaclyRoom
+### fetchExactlyRoom
 -	**URL** : `/api/kahoot/sessionid/:pin`
 -	**Method** : `GET`
 -	**Auth required** : `None`
@@ -906,7 +906,124 @@ Response Body: `rooms`
 ## Group 04
 ## Group 05
 ## Group 06
+
+### **Fetch Leaderboard Ranking**
+
+> Get Leaderboard Rank
+
+- **URL**:`/api/leaderboard`
+- **Method**:`GET`
+- **Auth required**:`Yes`
+- **Body**:`none`
+- **Params**:`none`
+
+#### Success Response
+
+- **Status code**:`200`
+
+    **Response Body**:
+
+    ```
+    {
+    displayname: String 
+    titlename: String
+    xp: String
+    }
+    ```
+
+
+
+### **Fetch All Path** 
+
+> Get Path
+
+- **URL**:`/api/learningpath`
+- **Method**:`GET`
+- **Auth required**:`Yes`
+- **Body**:`none`
+- **Params**:`none`
+
+#### Success Response
+
+- **Status code**:`200`
+
+    **Response Body**:
+
+    ```
+    {
+    path_description: String
+    path_name: String
+    pathid: Integer
+    }
+    ```
+
+
+
+### **Fetch Current Path** 
+
+> Get Current Path
+
+- **URL**:`/api/learningpath/path`
+- **Method**:`GET`
+- **Auth required**:`Yes`
+- **Body**:`none`
+- **Params**:`none`
+
+#### Success Response
+
+- **Status code**:`200`
+
+    **Response Body**:
+
+    ```
+    {
+    complete: Boolean
+    node_desc: String
+    node_name: String
+    nodeid: Integer
+    parent_complete: Boolean
+    parent_node_id: Integer
+    pathid: Integer
+    }
+    ```
+
+    
+
+### **Fetch Node Exercise** 
+
+> Get Exercise
+
+- **URL**:`/api/learningpath/exercise`
+- **Method**:`GET`
+- **Auth required**:`Yes`
+- **Body**:`none`
+- **Params**:`none`
+
+#### Success Response
+
+- **Status code**:`200`
+
+    **Response Body**:
+
+    ```
+    {
+    answer: String
+    complete: Boolean
+    nextNode: Integer
+    node_name: Boolean
+    nodeid: Integer
+    path_name: String
+    pathid: Integer
+    question: String
+    }
+    ```
+
+
+
+
+
 ## Group 07
+
 ## Group 08
 ### Fetch Announcement
 > Get Announcement
@@ -1203,7 +1320,7 @@ Response Body: `none`
 #### Success Response
 -	Status code : `200`
 Response Body: `none`
-   
+  
 ### Update contest
 >Put contest
 - **URL** : `/grader/econtest`
