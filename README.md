@@ -2138,8 +2138,11 @@ Response Body: `none`
 	    	"whentime" : Timestamp,
 	    	"displayname" : String,
 	    	"status" : String,
-	    	"conquestionno" : int,
-	    	"language" : String
+	    	"conquestionno" : Integer,
+	    	"language" : String,
+	        "time" : Integer,
+	        "memory" : Integer,
+	        "score" : Integer
 	  	}
 	]
 	```
@@ -2435,7 +2438,7 @@ Response Body: `none`
 
 ​	
 
-### Fetch  contest question details (Unfinish)
+### Fetch  contest question details 
 
 > Get the details of the problem in the contest
 
@@ -2586,19 +2589,16 @@ Response Body: `none`
   **Response Body**:
 
   ```json
-  {
-      "attemptid": Integer,
-      "userid": String,
-      "questionid": Integer,
-      "attempno": Integer,
-      "score": Integer,
-      "status": String,
-      "time": Integer,
-      "memory": Integer,
-      "language": String,
-      "code": String,
-      "whentime": Timestamp
-    },
+  [
+      {
+      	"score": Integer,
+      	"status": String,
+      	"time": Integer,
+      	"memory": Integer,
+      	"displayname": String,
+      	"whentime": Timestamp
+    	},
+  ]
   ```
 
 #### Error Response
