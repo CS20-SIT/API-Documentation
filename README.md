@@ -1371,6 +1371,34 @@ Response Body: `rooms`
 
   **Response Body** :`none`
 
+### Delete Course
+
+> Delete Course
+
+- **URL** : `api/instructor/deletecourse`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  {
+  	"courseid" : String
+  }
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
 ## Group 08
 ### Fetch Announcement
 > Get Announcement
@@ -1668,7 +1696,7 @@ Response Body: `none`
 #### Success Response
 -	Status code : `200`
 Response Body: `none`
-  
+
 ### Update contest
 >Put contest
 - **URL** : `/grader/econtest`
