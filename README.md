@@ -3019,7 +3019,7 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: ```{ data: {packageid: <uuid>, packagename: <char>, instructorid: <uuid> ,discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer> }}```
+    **Response Body**: ```{ package: {packageid: <uuid>, packagename: <char>, instructorid: <uuid> ,firstname: <varchar>, lastname: <varchar>, discount: <numeric>, detail: <varchar>, image: <varchar>, price: <nemeric> }, courseCount: {courseid: <uuid> , coursename: <varchar>, firstname: <varchar>, lastname: <varchar>,coursepicture: <varchar>, avatar: <varchar>}, instructorList:{firstname: <varchar>, lastname: <varchar>, avatar: <varchar>}, courseList:{courseid: <uuid> , coursename: <varchar>, firstname: <varchar>, lastname: <varchar>,coursepicture: <varchar>, avatar: <varchar>}}```
     
 #### Error Response
 
