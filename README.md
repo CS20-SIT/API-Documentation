@@ -2,6 +2,469 @@
 ## Manager
 ### Authentications Route
 
+### User Login
+
+> Authenticate the use and return the cookie back
+
+- **URL** : `/api/auth/login`
+
+- **Method** : `POST`
+
+- **Auth required** : `No`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    	email: <String>
+    	password: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Cookie**: `jwt`
+
+  **Response Body**: 
+  
+  ```json
+  { 
+      success: true, 
+      isVerify: <true|false> 
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: 'Email or password is incorrect'
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### User Registration
+
+> Register the new user
+
+- **URL** : `/api/auth/register`
+
+- **Method** : `POST`
+
+- **Auth required** : `No`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+      email: <String>
+      password: <String>
+      firstname: <String>
+      lastname: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Cookie**: `jwt`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: 'Email is used'
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### User Profile
+
+> Get user profile
+
+- **URL** : `/api/auth/profile`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Cookie**: `jwt`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "userid": <String>,
+      "firstname": "<String>,
+      "lastname": <String>,
+      "birthdate": <String>,
+      "initial": <String>,
+      "phoneno": <String>,
+      "displayname": <String>,
+      "bio": <String>,
+      "avatar": <String of URL>,
+      "createat": <String>,
+      "updateat": <String>,
+      "id": <String>,
+      "role": <String>,
+      "email": <String>,
+      "verify": <boolean>
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `401`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "success": false,
+      "error": "Unauthorize"
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### User Email Verification
+
+> Verify the email that user input
+
+- **URL** : `/api/auth/verify/:token`
+
+- **Method** : `GET`
+
+- **Auth required** : `NO`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: `None but redirect to successful verification page` 
+
+#### Error Response
+
+- **Status code** : `200`
+
+  **Response Body**:` None but redirect to error verification page`
+
+---
+
+### User Logout
+
+> Logout user from the system
+
+- **URL** : `/api/auth/logout`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+  
+#### Error Response
+- **Status code** : `401`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "success": false,
+      "error": "Unauthorize"
+  }
+  ```
+
+---
+
+### Admin Registration
+
+> Register the new admin
+
+- **URL** : `/api/auth/admin/register`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    	email: <String>
+    	password: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: 'Username is used'
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Login
+
+> Let admin login to the system
+
+- **URL** : `/api/auth/admin/login`
+
+- **Method** : `POST`
+
+- **Auth required** : `NO`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    	email: <String>
+    	password: <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <'User does not exist' | 'Password is not correct'>
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Profile
+
+> Return infomation of that admin
+
+- **URL** : `/api/auth/admin/profile`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "displayname": <String>,
+      "firstname": <String>,
+      "lastname": <String>,
+      "avatar": <String>,
+      "role": <String>
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Logout
+
+> Logout admin from the system
+
+- **URL** : `/api/auth/admin/logout`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: true
+  }
+  ```
+#### Error Response
+- **Status code** : `401`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "success": false,
+      "error": "Unauthorize"
+  }
+  ```
+---
+
 ### Google Authentication
 
 > Redirect to /api/auth/google (do not use axios, just use <a> tag to redirect the URL)
@@ -12,17 +475,11 @@
 - **Parameters** : `None`
 - **Body** : `None`
 
-
-
 #### Success Response
 
 - **Status code** : `200`
 
   **Response Body**: `None`
-
-#### Example
-
-
 
 ---
 
@@ -35,8 +492,6 @@
 - **Auth required** : `No`
 - **Parameters** : `None`
 - **Body** : `None`
-
-
 
 #### Success Response
 
@@ -1237,37 +1692,51 @@ Response Body: `none`
 ## Group 09
 ## Group 10
 
-### fetch previewQuestion
-	> Get previewQuestion
+### Fetch question preview
+> Get the info of the question
 
-- **URL** : `/grader/getPreviewQuestion`
+- **URL** : `/api/grader/getPreviewQuestion`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"offset":integer`
+- **Auth required** : `No`
+- **Parameters** : `"offset" : Integer`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "id":int,
-	 "title": String,
-	 "description": String,
-	 "difficulty": String
-	
+    **Response Body**:
+    
+	```json
+	{
+	   "id" : Integer,
+	   "title" : String,
+	   "description" : String,
+	   "difficulty" : String
+	}
+	```
 
- 	}`
+#### Error Response
 
+- **Status code** : `400`
 
+  **Response Error** :
 
-### fetch PreviewContest
-	> Get PreviewContest
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
 
-- **URL** : `/grader/getPreviewContest`
+  
+
+### Fetch  total number of questions
+
+> Get the total number of questions
+
+- **URL** : `/api/grader/countAllQuestion`
 - **Method** : `GET`
-- **Auth required** : `Yes`
+- **Auth required** : `No`
 - **Parameters** : `none`
 - **Body** : `None`
 
@@ -1275,131 +1744,282 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "conno":int,
-	 "title": String,
-	 "conruletype": String,
-	 "starttime": timestamp,
-	 "endtime": timestamp,
-	 "status": Boolean
-	
+    **Response Body**:
+    
+	```json
+	{
+	   "count" : Integer
+	}
+	```
 
- 	}`
+#### Error Response
 
+- **Status code** : `400`
 
+  **Response Error** :
 
-### fetch ContestDetail
-	> Get ContestDetail
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
 
-- **URL** : `/grader/getContestDetail`
+  
+
+### Fetch announcement preview
+>  Get info of the announcement
+
+- **URL** : `/api/grader/getAnnouncement`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":Integer`
+- **Auth required** : `No`
+- **Parameters** : `none`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-      	{
-	 "conno":int,
-	 "title": String,
-	 "description": String,
-	 "difficulty": String,
-	 "conruletype": String,
-	 "starttime": timestamp,
-	 "endtime": timestamp,
-	 "status": Boolean,
-	 "displayname": String
+    **Response Body**: 
 
- 	}`
+    ```json
+    [
+    	{
+        	"id" : Integer,
+        	"title" : String,
+        	"time" : Timestamp,
+        	"displayname" : String
+        }
+    ]
+    ```
 
+#### Error Response
 
+- **Status code** : `400`
 
-### fetch ContestAnnouncement
-	> Get ContestAnnoucement
+  **Response Error** :
 
-- **URL** : `/grader/getContestAnnoucement`
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch contest preview
+
+>  Get info of the the contest
+
+- **URL** : `/api/grader/getPreviewContest`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":integer`
+- **Auth required** : `No`
+- **Parameters** : `none`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "coannno":int,
-	 "title": String,
-	 "description": String,
-	 "displayname": String,
-	 "time": Timestamp
+  **Response Body**: 
 
- 	}`
+  ```json
+  [
+  	{
+      	"conno": Integer,
+      	"title": String,
+      	"conruletype": String,
+      	"starttime": Timestamp,
+      	"endtime": Timestamp,
+      	"status": Boolean
+      }
+  ]
+  ```
 
+#### Error Response
 
+- **Status code** : `400`
 
-### fetch ContestProblem
-	> Get ContestProblem
+  **Response Error** :
 
-- **URL** : `/grader/getContestProblem`
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch detail of the contest
+
+>  Get the detail of the contest
+
+- **URL** : `/api/grader/getContestDetail`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":integer`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "id": Integer,
-	 "title": String,
-	 "conquestionno": Integer,
-	 "difficulty": String,
-	 "description": String
+  **Response Body**: 
 
- 	}`
+  ```json
+  {
+      "conno": Integer,
+      "title": String,
+      "description": String,
+      "conruletype": String,
+      "starttime": String,
+      "endtime": String,
+      "status": Boolean,
+      "displayname": String
+  }
+  ```
 
+#### Error Response
 
+- **Status code** : `400`
 
-### fetch ContestSubmission
-	> Get ContestSubmission
+  **Response Error** :
 
-- **URL** : `/grader/getContestSubmission`
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch the contest announcement
+
+> Get the all visible announcements in the contest
+
+- **URL** : `/api/grader/getContestAnnouncement`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `"contestId":integer`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
 - **Body** : `None`
 
 #### Success Response
 
 - **Status code** : `200`
 
-    **Response Body**: `
+    **Response Body**:
+
+    ```json
+    [
     	{
-	 "whentime":Timestamp,
-	 "displayname": String,
-	 "status": Boolean,
-	 "conquestionno": Integer,
-	 "language": String
-	
+        	"coannno": Integer,
+        	"title": String,
+        	"description": String,
+        	"displayname": String,
+        	"time": Timestamp
+    	}
+    ]
+    ```
 
- 	}`
+#### Error Response
 
+- **Status code** : `400`
 
+  **Response Error** :
 
-### fetch Announcement
-	> Get Announcement
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
 
-- **URL** : `/grader/getAnnouncement`
+  
+
+### Fetch contest problems
+> Get all the problem in the particular contest
+
+- **URL** : `/api/grader/getContestProblem`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+
+    ```json
+    {
+     	"id" : Integer,
+     	"title" : String,
+     	"conquestionno" : int,
+     	"difficulty" : String,
+        "description" : String
+    }
+    ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch contest submission
+> Get all of the problem submissions in a particular contest
+
+- **URL** : `/api/grader/getContestSubmission`
 - **Method** : `GET`
 - **Auth required** : `Yes`
+- **Parameters** : `"contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	[
+		{
+	    	"whentime" : Timestamp,
+	    	"displayname" : String,
+	    	"status" : String,
+	    	"conquestionno" : int,
+	    	"language" : String
+	  	}
+	]
+	```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+  
+
+### Fetch question tags
+> Get all of the question tags 
+
+- **URL** : `/api/grader/getQuestionTag`
+- **Method** : `GET`
+- **Auth required** : `No`
 - **Parameters** : `None`
 - **Body** : `None`
 
@@ -1407,47 +2027,38 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "id":int,
-	 "title": String,
-	 "time": Timestamp,
-	 "displayname": String
-	
+    **Response Body**:
+    
+	```json
+	[
+		{
+	    	"tagid" : Integer,
+	    	"tagname" : String
+		}
+	]
+	```
 
- 	}`
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
 
 
 
-### fetch QuestionTag
-	> Get QuestionTag
+### Fetch Question by tag
 
-- **URL** : `/grader/getQuestionTag`
+	> Get the questions by tag
+
+- **URL** : `/api/grader/getQuestionByTag`
 - **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `None`
-- **Body** : `None`
-
-#### Success Response
-
-- **Status code** : `200`
-
-    **Response Body**: `
-    	{
-	 "tagid": Integer,
-	 "tagname": String
-	
-
- 	}`
-
-
-
-### fetch QuestionByTag
-	> Get QuestionByTag
-
-- **URL** : `/grader/getQuestionByTag`
-- **Method** : `GET`
-- **Auth required** : `Yes`
+- **Auth required** : `No`
 - **Parameters** : `"tag": String`
 - **Body** : `None`
 
@@ -1455,24 +2066,38 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "tagid": Integer,
-	 "title": String,
-	 "description": String,
-	 "difficulty": String
-	
+    **Response Body**:
+    
+	```json
+	{
+	   "tagid" : Integer,
+	   "title" : String,
+	   "description" : String,
+	   "difficulty" : String
+	}
+	```
 
- 	}`
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
 
 
+### Fetch preview of the contest home page
+> Get the overview details of the contest 
 
-### fetch HomePreviewContest
-	> Get HomePreviewContest
-
-- **URL** : `/grader/getHomePreviewContest`
+- **URL** : `/api/grader/getHomePreviewContest`
 - **Method** : `GET`
-- **Auth required** : `Yes`
+- **Auth required** : `No`
 - **Parameters** : `None`
 - **Body** : `None`
 
@@ -1480,16 +2105,444 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `
-    	{
-	 "conno": Integer,
-	 "title": String,
-	 "description": String,
-	 "conruletype": String,
-	 "starttime": Timestamp,
-	 "endtime": Timestamp
+    **Response Body**:
 
- 	}`
+    ```json
+    {
+     	"conno": Integer,
+     	"title": String,
+     	"description": String,
+     	"conruletype": String,
+    	"starttime": Timestamp,
+    	"endtime": Timestamp
+    }
+    ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+### Fetch announcement by id
+
+> Get the announcement details from the id of the announcement
+
+- **URL** : `/api/grader/getAnnouncementById`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+   	"conno": Integer,
+   	"title": String,
+   	"description": String,
+   	"conruletype": String,
+  	"starttime": Timestamp,
+  	"endtime": Timestamp
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  top six of OI ranking
+
+> Get the first six people from OI ranking
+
+- **URL** : `/api/grader/getOIRankingTopSix`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `none`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+    {
+      "name" : String,
+      "totalcorrect" : Integer,
+      "avatar" : URL
+    }
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  top six of ACM Ranking
+
+> Get the first six people from OI ranking
+
+- **URL** : `/api/grader/getACMRankingTopSix`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `none`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+      {
+          "name": String,
+      	"totalcorrect": Integer,
+      	"avatar": URL
+      }
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  contest announcement detail
+
+> Get the detail of the announcement in the cotests
+
+- **URL** : `/api/grader/getContestAnnouncementDetail`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer, "contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "coannno": Integer,
+      "title": String,
+      "description": String,
+      "displayname": String,
+      "time": Timestamp
+    }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  contest question details (Unfinish)
+
+> Get the details of the problem in the contest
+
+- **URL** : `/api/grader/getContestQuestionDetail`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer, "contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "conquestionno": Integer,
+      "id": Integer,
+      "title": String,
+      "description": String,
+      "hint": String,
+      "intputdes": String,
+      "outputdes": String,
+      "timelimit": Integer,
+      "memorylimit": Integer,
+      "difficulty": String,
+      "ruletype": String,
+      "displayname": String
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  question test cases
+
+> Get all of the test cases of the question
+
+- **URL** : `/api/grader/getQuestionTestCase`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+      {
+      	"questionid": Integer,
+      	"sampleno": Integer,
+      	"intput": String,
+      	"output": String
+  	}
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  question details
+
+> Get the details of the problem that is not in the contest
+
+- **URL** : `/api/grader/getQuestionDetail`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"id" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "id": Integer,
+      "title": String,
+      "description": String,
+      "hint": String,
+      "intputdes": String,
+      "outputdes": String,
+      "timelimit": Integer,
+      "memorylimit": Integer,
+      "difficulty": String,
+      "ruletype": String,
+      "displayname": String
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  question submissions
+
+> Get all of the submissions of that problem
+
+- **URL** : `/api/grader/getQuestionSubmission`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `"questionId" : Integer, "userId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+      "attemptid": Integer,
+      "userid": String,
+      "questionid": Integer,
+      "attempno": Integer,
+      "score": Integer,
+      "status": String,
+      "time": Integer,
+      "memory": Integer,
+      "language": String,
+      "code": String,
+      "whentime": Timestamp
+    },
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Fetch  number of all questions with tag
+
+> Get the number of all questions that have that tag
+
+- **URL** : `/api/grader/getCountQuestionByTag`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"tag" : String`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  {
+   	"count" : Integer	
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
+### Submit the question attempt
+
+> Sent the code to the online compiler.
+
+- **URL** : `/api/grader/submission`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+    "source_code": <base64 encode source-code>,
+    "problem_id": <Integer>,
+    "language": <Java|C|C++|Python3|Python2>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+    "attemptId" : Integer
+    "tokens" : String <base64>
+  }
+  ```
+
+
 
 ## Group 11
 ## Group 12
@@ -1732,5 +2785,695 @@ Response Body: `none`
     
     
 ## Group 13
+
+### getCategories
+
+> Get Categories
+
+- **URL** : `/api/package/getCategories`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ```{cateid: <integer>, cate_name: <varchar>}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+  
+
+### createPackage
+
+> Create package
+
+- **URL** : `/api/package/createPackage`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{packagename: <char>, instructorid: <uuid> ,discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer>, packageid: <uuid>,  courseid: <uuid>}`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+  
+  
+  
+### deletePackage
+
+> Delete package
+
+- **URL** : `/api/package/delete/package`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{packageid: <uuid>}`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getPackage
+
+> Get package
+
+- **URL** : `/api/package/getPackage`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ data: {packageid: <uuid>, packagename: <char>, instructorid: <uuid> ,discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer> }}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getAllPackage
+
+> Get all package
+
+- **URL** : `/api/package/getAllPackage`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{instructorid: <uuid>, userid: <uuid> ,packagename: <char>, detail: <varchar>, image: <varchar>, discount: <numeric>, ispublic: <boolean>, cateid: <integer>, firstname: <varchar>, lastname: <varchar> }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getCoursesOfCreatingPackage
+
+> Get course of creating package
+
+- **URL** : `/api/package/getCoursesOfCreatingPackage`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{courseid: <uuid> , coursename: <varchar>, coursepicture: <varchar>, price: <numeric>,totalPrice: {price: <numeric>}}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### upload
+
+> Upload package picture
+
+- **URL** : `/api/package/uploadPackagePic`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: `None`
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getCourses
+
+> Get course 
+
+- **URL** : `/api/package/courses`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{courseid: <uuid> , coursename: <varchar>, coursepicture: <varchar>, price: <numeric>, firstname: <varchar>, lastname: <varchar>}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getCourseFromIds
+
+> Get course from ID
+
+- **URL** : `/api/package/coursesFromIds`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{courseid: <uuid> , coursename: <varchar>, price: <numeric>}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+  
+  
+  
+### getInstructorPackage
+
+> Get instructor package
+
+- **URL** : `/api/package/getInstructorPackage`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{price: <numeric>, packageid: <uuid>, packagename: <char>, discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer>, cate_name: <varchar> }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getNumCourses
+
+> Get number of courses
+
+- **URL** : `/api/package/numCourses`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{count: {coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>} }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### publishPackage
+
+> Show publish package
+
+- **URL** : `/api/package/publishPackage`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{packageid: <uuid>}`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{packages: {ispublic: <boolean>} }```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : `None`
+
+
+
+### getAllCourse
+
+> Get all course
+
+- **URL** : `/api/course/getAllCourse`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>, instructorid: <uuid>, userid: <uuid> , isverified: <boolean>, createat: <timestamp>, approveat: <timestamp>, approver: <uuid>, avatar: <varchar>, wallpaper: <varchar>, biography: <varchar>, firstname: <varchar>, lastname: <varchar>, birthdate: <date>, initial: <varchar>, phoneno: <varchar>, display: <varchar>, bio: <varchar>,updateat: <timestamp>,cataid: <integer>, cataname: <varchar>, courseid: <uuid>}```
+    
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** : `None`
+
+
+
+### searchCourse
+
+> Search course
+
+- **URL** : `/api/course/search`
+- **Method** : `POST`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ data: {coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>}}```
+    
+#### Error Response
+
+- **Status code** : `404`
+
+  **Response Error** : `None`
+  
+  
+  
+### getCourse
+
+> Get course
+
+- **URL** : `/api/course/getCourse`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ firstname: <varchar>, lastname: <varchar>, coursename: <varchar>, coursepicture: <varchar>,  price: <numeric>, ownerid: <uuid>, courseid: <uuid>}```
+    
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** : `None`
+  
+  
+
+  
+### getCategory
+
+> Get category
+
+- **URL** : `/api/course/getCategory`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ category: {cataname: <varchar>}}```
+
+
+
+### searchCategory
+
+> Search category of course
+
+- **URL** : `/api/course/categorySearch/:cataname`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `{cataname: <varchar>}`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>, instructorid: <uuid>, userid: <uuid> , isverified: <boolean>, createat: <timestamp>, approveat: <timestamp>, approver: <uuid>, avatar: <varchar>, wallpaper: <varchar>, biography: <varchar>, firstname: <varchar>, lastname: <varchar>, birthdate: <date>, initial: <varchar>, phoneno: <varchar>, display: <varchar>, bio: <varchar>,updateat: <timestamp>,cataid: <integer>, cataname: <varchar>, courseid: <uuid>}```
+    
+#### Error Response
+
+- **Status code** : `404`
+
+  **Response Error** : `None`
+
+
+
+### createReview
+
+> Create review
+
+- **URL** : `/api/review/create`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{userid: <uuid>, courseid: <uuid>, reviewrate: <numeric>, comment: <char>, date: <date>}`
+
+
+
+- **Status code** : `201`
+
+    **Response Body**: `None`
+
+
+
+### getReview
+
+> Get review
+
+- **URL** : `/api/review`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{ reviewrate: <numeric>, count:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> }, data:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> } }```
+
+
+
 ## Group 14
+
+### Fetch Global Event
+> Get the info of the global event
+
+- **URL** : `/api/event/getGlobalEvent`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "eventid": <Integer>,
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "detail": String,
+	   "place": String,
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>,
+	   "adminid": <Integer>
+	}
+	```
+
+### Fetch Course Event
+> Get the info of the course event
+
+- **URL** : `/api/event/getCourseEvent`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "datail": String,
+	   "place": String,
+	   "userid": <Integer>,
+	   "courseid": <Integer>
+	}
+	```
+	
+### Fetch Event In Month Year
+> Get the info of the month and year event
+
+- **URL** : `/api/event/getEventInMonthYear`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+
+### Fetch Event
+> Get the info of the event
+
+- **URL** : `/api/event/getEvent`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "eventid": <Integer>,
+	   "courseid": <Integer>,
+	   "instructorid": <Integer>,
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "detail": String,
+	   "place": String,
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>
+	}
+	```
+
+### Fetch Student Course
+> Get the info of the course who student enrolled
+
+- **URL** : `/api/event/getMyCourse`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "courseid": <Integer>,
+	   "coursename": String
+	}
+	```
+
+### Fetch Admin Event
+> Get the info of the admin event
+
+- **URL** : `/api/event/getAdminEvent`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "eventid": <Integer>,
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date,
+	   "starttime": time,
+	   "endtime": time,
+	   "detail": String,
+	   "place": String,
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>,
+	   "adminid": <Integer>
+	}
+	```
+	
+### Create Course Event by Instructor
+> Create Course Event
+
+- **URL** : `/api/event/createEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String,
+		"userid": <Integer>,
+		"courseid": <Integer>
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Create Global Event by Admin
+> Create Global Event
+
+- **URL** : `/api/event/createAdminEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String,
+		"adminid": <Integer>
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+	
+### Delete Global Event by Admin
+> Delete Global Event
+
+- **URL** : `/api/event/dAdminEvent`
+- **Method** : `DELETE`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "id": String
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Delete Course Event by Instructor
+> Delete Course Event
+
+- **URL** : `/api/event/dEvent`
+- **Method** : `DELETE`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "id": String
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+	
 ## Group 15
