@@ -1233,7 +1233,7 @@ Response Body: `rooms`
 
 > Insert material of the section
 
-- **URL** : `api/instructor/upload/evidence`
+- **URL** : `api/instructor/upload/materials`
 
 - **Method** : `POST`
 
