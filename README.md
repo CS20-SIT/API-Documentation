@@ -3278,6 +3278,9 @@ Response Body: `none`
     
 	```json
 	{
+	   "eventid": <Integer>,
+	   "courseid": <Integer>,
+	   "instructorid": <Integer>,
 	   "title": String,
 	   "startdate": date,
 	   "enddate": date,
@@ -3285,8 +3288,8 @@ Response Body: `none`
 	   "endtime": time,
 	   "datail": String,
 	   "place": String,
-	   "userid": <Integer>,
-	   "courseid": <Integer>
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>
 	}
 	```
 	
@@ -3397,6 +3400,51 @@ Response Body: `none`
 	}
 	```
 	
+### Fetch Overview Each Day Event by Instructor
+> Get the info of the overview each day event by instructor
+
+- **URL** : `/api/event/getEventbyDate`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+	
+### Fetch Overview Each Day Event by Admin
+> Get the info of the overview each day event by admin
+
+- **URL** : `/api/event/getAdminEventInMonthYear`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+
 ### Create Course Event by Instructor
 > Create Course Event
 
@@ -3411,7 +3459,7 @@ Response Body: `none`
 		"endtime": time,
 		"datail": String,
 		"place": String,
-		"userid": <Integer>,
+		"instructorid": <Integer>,
 		"courseid": <Integer>
 		}
 
@@ -3436,6 +3484,50 @@ Response Body: `none`
 		"datail": String,
 		"place": String,
 		"adminid": <Integer>
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Edit Event by Instructor
+> Edit event by instructor
+
+- **URL** : `/api/event/eEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Edit Event by Admin
+> Edit event by admin
+
+- **URL** : `/api/event/eAdminEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String
 		}
 
 #### Success Response
