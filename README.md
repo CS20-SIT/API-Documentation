@@ -1024,6 +1024,353 @@ Response Body: `rooms`
 
 ## Group 07
 
+### Insert Instructor register
+
+> Insert Instructor information
+
+- **URL** : `api/instructor/register`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  {
+      "degree" : String
+      "expert" : String
+      "bio" : String
+      "degreepath" : String
+      "expertpath" : String
+  }
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload instructor evidence
+
+> Insert picture of instructor evidence
+
+- **URL** : `api/instructor/upload/evidence`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Photo File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Fetch Instructor approve
+
+> get Instructor approve
+
+- **URL** : `api/instructor/profile`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  {
+  "isverified" : boolean
+  "role" : String
+  }
+  ```
+
+### Fetch Instructor profile
+
+> get Instructor information
+
+- **URL** : `api/instructor/profileDetail`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  {
+  	"bio" : String
+  	"degree" : [String]
+  	"expert" : [String]
+  }
+  ```
+
+### Fetch Instructor course
+
+> Get course that instructor is the owner
+
+- **URL** : `api/instructor/courses`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  [
+   {
+  	"certpath" : String
+  	"coursedescription" : String
+  	"courseid" : String
+  	"coursename" : String
+  	"coursepicture" : String
+  	"havecert" : boolean
+  	"language" : String
+  	"ownerid" : String
+  	"price" : String
+  	"samplevideo" : String
+  	"status" : String
+   }
+  ]
+  
+  ```
+
+### Update Instructor profile
+
+> Update Instructor information
+
+- **URL** : `api/instructor/Editprofile`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : 
+
+``` 
+{
+	"degree" : String
+    "expert" : String
+    "bio" : String
+}
+```
+
+
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+
+### Insert Course create
+
+> Insert Course create information
+
+- **URL** : `api/instructor/course`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  {
+  "name" : String
+  "picturePath" : String
+  "videoPath" : String
+  "section" : [
+  	{
+  	"name" : String
+  	"materials" : [{"path" : String}]
+  	"questions" : [
+  		{
+  		"choices" : [String, String, String, String]
+  		"correct" : int
+  		"q" : String
+  		}
+  	]
+  	"videos" : [
+  		{
+  		"name" : String
+  		"path" : String
+  		}
+  	]
+  	}
+  ]
+  }
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** : `none`
+
+### Get Course category
+
+> Get Course category
+
+- **URL** : `api/instructor/categories`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  [
+  	{
+			"cataid" : int
+  		"cataname" : String
+  	}
+  ]
+  ```
+  
+
+### Insert Upload Course  picture
+
+> Insert picture of the course
+
+- **URL** : `api/instructor/upload/picture`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Photo File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload Course sample video
+
+> Insert sample video of the course
+
+- **URL** : `api/instructor/upload/sampleVideo`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Video File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload Section video
+
+> Insert video of the section
+
+- **URL** : `api/instructor/upload/videos`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Video File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload  Section material
+
+> Insert material of the section
+
+- **URL** : `api/instructor/upload/materials`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  PDF File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
 ## Group 08
 ### Fetch Announcement
 > Get Announcement
@@ -1035,6 +1382,7 @@ Response Body: `rooms`
 #### Success Response
 -	Status code : `200`
 Response Body: 
+   
     ```
     { data: {id: <integer>, title: <varchar>, description: <text>, adminid: <uuid>, isvisible: <boolean>, time: <timestamp>}}   
     ```
@@ -3046,6 +3394,9 @@ Response Body: `none`
     
 	```json
 	{
+	   "eventid": <Integer>,
+	   "courseid": <Integer>,
+	   "instructorid": <Integer>,
 	   "title": String,
 	   "startdate": date,
 	   "enddate": date,
@@ -3053,8 +3404,8 @@ Response Body: `none`
 	   "endtime": time,
 	   "datail": String,
 	   "place": String,
-	   "userid": <Integer>,
-	   "courseid": <Integer>
+	   "lastupdate": timestamp,
+	   "typeid": <Integer>
 	}
 	```
 	
@@ -3165,6 +3516,51 @@ Response Body: `none`
 	}
 	```
 	
+### Fetch Overview Each Day Event by Instructor
+> Get the info of the overview each day event by instructor
+
+- **URL** : `/api/event/getEventbyDate`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "title": String,
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+	
+### Fetch Overview Each Day Event by Admin
+> Get the info of the overview each day event by admin
+
+- **URL** : `/api/event/getAdminEventInMonthYear`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+
 ### Create Course Event by Instructor
 > Create Course Event
 
@@ -3179,7 +3575,7 @@ Response Body: `none`
 		"endtime": time,
 		"datail": String,
 		"place": String,
-		"userid": <Integer>,
+		"instructorid": <Integer>,
 		"courseid": <Integer>
 		}
 
@@ -3204,6 +3600,50 @@ Response Body: `none`
 		"datail": String,
 		"place": String,
 		"adminid": <Integer>
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Edit Event by Instructor
+> Edit event by instructor
+
+- **URL** : `/api/event/eEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String
+		}
+
+#### Success Response
+
+- **Status code** : `200`
+	
+	**Response Body**: `None`
+
+### Edit Event by Admin
+> Edit event by admin
+
+- **URL** : `/api/event/eAdminEvent`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : { "title": String,
+		"startdate": date,
+		"enddate": date,
+		"starttime": time,
+		"endtime": time,
+		"datail": String,
+		"place": String
 		}
 
 #### Success Response
