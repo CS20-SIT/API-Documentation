@@ -452,6 +452,354 @@ Response Body: `rooms`
 ## Group 05
 ## Group 06
 ## Group 07
+
+### Insert Instructor register
+
+> Insert Instructor information
+
+- **URL** : `api/instructor/register`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  {
+      "degree" : String
+      "expert" : String
+      "bio" : String
+      "degreepath" : String
+      "expertpath" : String
+  }
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload instructor evidence
+
+> Insert picture of instructor evidence
+
+- **URL** : `api/instructor/upload/evidence`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Photo File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Fetch Instructor approve
+
+> get Instructor approve
+
+- **URL** : `api/instructor/profile`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  {
+  "isverified" : boolean
+  "role" : String
+  }
+  ```
+
+### Fetch Instructor profile
+
+> get Instructor information
+
+- **URL** : `api/instructor/profileDetail`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  {
+  	"bio" : String
+  	"degree" : [String]
+  	"expert" : [String]
+  }
+  ```
+
+### Fetch Instructor course
+
+> Get course that instructor is the owner
+
+- **URL** : `api/instructor/courses`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  [
+   {
+  	"certpath" : String
+  	"coursedescription" : String
+  	"courseid" : String
+  	"coursename" : String
+  	"coursepicture" : String
+  	"havecert" : boolean
+  	"language" : String
+  	"ownerid" : String
+  	"price" : String
+  	"samplevideo" : String
+  	"status" : String
+   }
+  ]
+  
+  ```
+
+### Update Instructor profile
+
+> Update Instructor information
+
+- **URL** : `api/instructor/Editprofile`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Body** : 
+
+``` 
+{
+	"degree" : String
+    "expert" : String
+    "bio" : String
+}
+```
+
+
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+
+### Insert Course create
+
+> Insert Course create information
+
+- **URL** : `api/instructor/course`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  {
+  "name" : String
+  "picturePath" : String
+  "videoPath" : String
+  "section" : [
+  	{
+  	"name" : String
+  	"materials" : [{"path" : String}]
+  	"questions" : [
+  		{
+  		"choices" : [String, String, String, String]
+  		"correct" : int
+  		"q" : String
+  		}
+  	]
+  	"videos" : [
+  		{
+  		"name" : String
+  		"path" : String
+  		}
+  	]
+  	}
+  ]
+  }
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** : `none`
+
+### Get Course category
+
+> Get Course category
+
+- **URL** : `api/instructor/categories`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :
+
+  ``` 
+  [
+  	{
+			"cataid" : int
+  		"cataname" : String
+  	}
+  ]
+  ```
+  
+
+### Insert Upload Course  picture
+
+> Insert picture of the course
+
+- **URL** : `api/instructor/upload/picture`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Photo File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload Course sample video
+
+> Insert sample video of the course
+
+- **URL** : `api/instructor/upload/sampleVideo`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Video File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload Section video
+
+> Insert video of the section
+
+- **URL** : `api/instructor/upload/videos`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  Video File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
+### Insert Upload  Section material
+
+> Insert material of the section
+
+- **URL** : `api/instructor/upload/evidence`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  PDF File
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
 ## Group 08
 ### Fetch Announcement
 > Get Announcement
@@ -463,6 +811,7 @@ Response Body: `rooms`
 #### Success Response
 -	Status code : `200`
 Response Body: 
+   
     ```
     { data: {id: <integer>, title: <varchar>, description: <text>, adminid: <uuid>, isvisible: <boolean>, time: <timestamp>}}   
     ```
@@ -748,7 +1097,7 @@ Response Body: `none`
 #### Success Response
 -	Status code : `200`
 Response Body: `none`
-    
+   
 ### Update contest
 >Put contest
 - **URL** : `/grader/econtest`
@@ -907,7 +1256,8 @@ Response Body: `none`
 	 "title": String,
 	 "description": String,
 	 "difficulty": String
-	 
+	
+
  	}`
 
 
@@ -933,7 +1283,8 @@ Response Body: `none`
 	 "starttime": timestamp,
 	 "endtime": timestamp,
 	 "status": Boolean
-	 
+	
+
  	}`
 
 
@@ -952,7 +1303,7 @@ Response Body: `none`
 - **Status code** : `200`
 
     **Response Body**: `
-   	{
+      	{
 	 "conno":int,
 	 "title": String,
 	 "description": String,
@@ -962,6 +1313,7 @@ Response Body: `none`
 	 "endtime": timestamp,
 	 "status": Boolean,
 	 "displayname": String
+
  	}`
 
 
@@ -986,6 +1338,7 @@ Response Body: `none`
 	 "description": String,
 	 "displayname": String,
 	 "time": Timestamp
+
  	}`
 
 
@@ -1010,6 +1363,7 @@ Response Body: `none`
 	 "conquestionno": Integer,
 	 "difficulty": String,
 	 "description": String
+
  	}`
 
 
@@ -1034,7 +1388,8 @@ Response Body: `none`
 	 "status": Boolean,
 	 "conquestionno": Integer,
 	 "language": String
-	 
+	
+
  	}`
 
 
@@ -1058,7 +1413,8 @@ Response Body: `none`
 	 "title": String,
 	 "time": Timestamp,
 	 "displayname": String
-	 
+	
+
  	}`
 
 
@@ -1080,7 +1436,8 @@ Response Body: `none`
     	{
 	 "tagid": Integer,
 	 "tagname": String
-	 
+	
+
  	}`
 
 
@@ -1104,9 +1461,10 @@ Response Body: `none`
 	 "title": String,
 	 "description": String,
 	 "difficulty": String
-	 
- 	}`
 	
+
+ 	}`
+
 
 
 ### fetch HomePreviewContest
@@ -1130,6 +1488,7 @@ Response Body: `none`
 	 "conruletype": String,
 	 "starttime": Timestamp,
 	 "endtime": Timestamp
+
  	}`
 
 ## Group 11
@@ -1351,8 +1710,8 @@ Response Body: `none`
 
     **Response Body**: `None`
     
-  
-  
+
+
 ### searchForum
 
 > Search forum
