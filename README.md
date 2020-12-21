@@ -914,6 +914,7 @@ Response Body: `rooms`
 - **Params** :`none`
 #### Success Response
 - **Status code** : `200`
+
 **Response Body** : 
 ```
 {chatroomid: <integer>, firstName: <varchar>, roomname: <varchar>, message: <varchar>, sendtime: <timestamp>}
@@ -928,6 +929,7 @@ Response Body: `rooms`
 - **Params** : `none`
 #### Success Response
 - **Status code** : `200`
+
 **Response Body** : 
 ```
 {          userID:  <uuid>, userFirstName: <varchar>, userLastName: <varchar>, userNickName: <varchar>, profilePicture: <filepath>',}
@@ -942,6 +944,7 @@ Response Body: `rooms`
 - **Params**: `none`
 #### Success Response
 - **Status code** : `200`
+
 **Response Body** : 
 ```
 invitations: [ { invitaionID: <Integer>, chatRoomID: <Integer>, chatRoomName: <varchar>, invitor: <varchar>, profilePicture: <path> }
@@ -957,6 +960,7 @@ invitations: [ { invitaionID: <Integer>, chatRoomID: <Integer>, chatRoomName: <v
 - **Params**: `none`
 #### Success Response
 - **Status code** : `200`
+
 **Response Body** : 
 ```
 users: [ { userID: <uuid>, userFirstName: <varchar> , userLastName: <varchar> , display: <varchar> , userProfile: <path> }
@@ -1007,24 +1011,25 @@ chatRoomName: <varchar>,
                 recieveColor: <varchar>,
             },
             membersID: [uuid,uuid,uuid,uuid],
-messages: [ { system: <Boolean>, sticker: <Boolean>,
-		message: <varchar>,
-		sendTime: <timestamp>,
-		reader: [
-			  {
-				readerID: <uuid>,
-				readTime: <timestamp>,
-			   },
-			   {
-				readerID: <uuid>,
-				readTime: <timestamp>,
-			   },
-			   {
-				readerID: <uuid>,
-				readTime: <timestamp>,
-			   },
-			   ],
-	}
+messages: [ { system: <Boolean>,
+                    	sticker: <Boolean>,
+					message: <varchar>,
+					sendTime: <timestamp>,
+					reader: [
+						{
+							readerID: <uuid>,
+							readTime: <timestamp>,
+						},
+						{
+							readerID: <uuid>,
+							readTime: <timestamp>,
+						},
+						{
+							readerID: <uuid>,
+							readTime: <timestamp>,
+						},
+					],
+				}
 ```
 
 ### Get Chatroom picture
@@ -1044,9 +1049,198 @@ messages: [ { system: <Boolean>, sticker: <Boolean>,
 {  chatRoomID: <Integer>,  chatRoomProfilePicture: <path>  }
 ```
 
+### decline Invitation
+> declineInvitation
+- **URL** : `/chat/declineInvitation`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	invitationid = Integer 
+	inviteeid = uuid
+}`
+- **Params** : `none`
+#### Success Response
 
+- **Status code** : `200`
 
+**Response Body** : 
 
+```
+{ success : true}
+```
+
+### hideChatroom
+> hideChatroom
+- **URL** : `/chat/hideChatroom`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	hide = Boolean
+	chatroomid = Integer
+	userid = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### leave Chatroom
+> leaveChatRoom
+
+- **URL** : `/chat/leaveChatRoom`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	userid = uuid
+	chatroomid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### deleteChatRoom
+> deleteChatRoom
+
+- **URL** : `/chat/deleteChatRoom`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	chatroomid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### storeMessage
+> sendMessage
+
+- **URL** : `/chat/sendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	message = String
+	sendtime = timestamo
+	chatroomid = Integer
+	userid = uuid
+	issticker = Boolean
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### unsendMessage
+> unsendMessage
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	messageid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### changeChatColor
+> changeThemeColor
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	sender_color = String
+	receiver_color = String
+	chatroomid = Integer
+	userid = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### changeChatRoomName
+> changeChatRoomName
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	roomname = String
+	chatroomid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### checkRead
+> readMessage
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	message = Integer
+	userid = uuid
+	sendtime = timestamp
+	hide = Boolean
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
 
 ## Group 06
 
