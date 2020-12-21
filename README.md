@@ -1036,14 +1036,41 @@ Response Body: `rooms`
 -	**Status code** : `200`
 **Response Body**: `rank,score`
 ### Upload
--	**URL** : `/api/kahoot/getRankScorePlayer/:sessionid`
+-	**URL** : `/api/kahoot/upload/picture`
 -	**Method** : `POST`
--	**Auth required** : `None`
+-	**Auth required** : `Yes`
 -	**Parameters** : `None`
 -	**Body** : `None`
 #### Success Response
 -	**Status code** : `None`
 **Response Body**: `result`
+### checkQuizClose
+-	**URL** : `/api/kahoot/checkQuizClose/:sessionid`
+-	**Method** : `GET`
+-	**Auth required** : `None`
+-	**Parameters** : `Yes`
+-	**Body** : `None`
+#### Success Response
+-	**Status code** : `200`
+**Response Body**: `update`
+### fetchExactlyRoomAfterStart
+-	**URL** : `/api/kahoot/sessionidAfterStart/:pin`
+-	**Method** : `GET`
+-	**Auth required** : `None`
+-	**Parameters** : `Yes`
+-	**Body** : `None`
+#### Success Response
+-	**Status code** : `200`
+**Response Body**: `exactlyRoom`
+### fetchExactlyRoomAfterStart
+-	**URL** : `/api/kahoot/closeRoom/:sessionid`
+-	**Method** : `GET`
+-	**Auth required** : `None`
+-	**Parameters** : `Yes`
+-	**Body** : `None`
+#### Success Response
+-	**Status code** : `None`
+**Response Body**: `None`
 
 
 
@@ -1331,7 +1358,7 @@ messages: [ { system: <Boolean>,
 ### changeChatColor
 > changeThemeColor
 
-- **URL** : `/chat/changeThemeColor`
+- **URL** : `/chat/unsendMessage`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
@@ -1354,7 +1381,7 @@ messages: [ { system: <Boolean>,
 ### changeChatRoomName
 > changeChatRoomName
 
-- **URL** : `/chat/changeChatRoomName`
+- **URL** : `/chat/unsendMessage`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
@@ -1375,7 +1402,7 @@ messages: [ { system: <Boolean>,
 ### checkRead
 > readMessage
 
-- **URL** : `/chat/readMessage`
+- **URL** : `/chat/unsendMessage`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
@@ -2538,7 +2565,7 @@ Response Body: `none`
  - **Body** :
  ```
 	 {
-		 "ccid" : int
+		 "pcode" : int
 	 }
  ```
  - **Params** : `none`
