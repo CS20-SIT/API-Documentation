@@ -1020,6 +1020,78 @@ Response Body: `rooms`
 
 
 
+### **Fetch Quiz by NodeID** 
+
+> Get quizByNodeId
+
+- **URL**:`/api/learningpath/quizByNodeId`
+- **Method**:`GET`
+- **Auth required**:`Yes`
+- **Body**:`none`
+- **Params**:`none`
+
+#### Success Response
+
+- **Status code**:`200`
+
+    **Response Body**:
+
+    ```
+    {
+    nodeDetail:
+        node_desc: String
+        node_name: String
+        nodeid: Integer
+        parent_node_id: Integer
+        path_name: String
+        pathid: Integer
+    questions: Array(4)
+        0:nodeid: Integer
+        	questionno: Integer
+        	questionname: String
+        	description: String
+          choices: Array(4) 
+              0: {choiceno: Integer, answer: String, iscorrect: Boolean}
+              1: {choiceno: Integer, answer: String, iscorrect: Boolean}
+              2: {choiceno: Integer, answer: String, iscorrect: Boolean}
+              3: {choiceno: Integer, answer: String, iscorrect: Boolean}
+        1: {nodeid: Integer, questionno: Integer, questionname: String, description: String, choices: Array(4)}
+        2: {nodeid: Integer, questionno: Integer, questionname: String, description: String, choices: Array(4)}
+        3: {nodeid: Integer, questionno: Integer, questionname: String, description: String, choices: Array(4)}
+    }
+    ```
+
+
+
+### Insert UserProgress for each completed node
+
+> Insert progress and score
+
+- **URL** : `/api/learningpath/completeNode`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+    ```
+    score: Integer
+    nodeid: Integer
+    ```
+
+    
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body** :`none`
+
+
+
 
 
 ## Group 07
@@ -1382,7 +1454,7 @@ Response Body: `rooms`
 #### Success Response
 -	Status code : `200`
 Response Body: 
-   
+  
     ```
     { data: {id: <integer>, title: <varchar>, description: <text>, adminid: <uuid>, isvisible: <boolean>, time: <timestamp>}}   
     ```
