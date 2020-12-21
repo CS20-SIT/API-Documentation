@@ -914,7 +914,7 @@ Response Body: `rooms`
 - **Params** :`none`
 #### Success Response
 - **Status code** : `200`
-Response Body :
+**Response Body** : 
 ```
 {chatroomid: <integer>, firstName: <varchar>, roomname: <varchar>, message: <varchar>, sendtime: <timestamp>}
 
@@ -928,7 +928,7 @@ Response Body :
 - **Params** : `none`
 #### Success Response
 - **Status code** : `200`
-Response Body:
+**Response Body** : 
 ```
 {          userID:  <uuid>, userFirstName: <varchar>, userLastName: <varchar>, userNickName: <varchar>, profilePicture: <filepath>',}
 ```
@@ -942,7 +942,7 @@ Response Body:
 - **Params**: `none`
 #### Success Response
 - **Status code** : `200`
-Response Body:
+**Response Body** : 
 ```
 invitations: [ { invitaionID: <Integer>, chatRoomID: <Integer>, chatRoomName: <varchar>, invitor: <varchar>, profilePicture: <path> }
 
@@ -957,7 +957,7 @@ invitations: [ { invitaionID: <Integer>, chatRoomID: <Integer>, chatRoomName: <v
 - **Params**: `none`
 #### Success Response
 - **Status code** : `200`
-Response Body:
+**Response Body** : 
 ```
 users: [ { userID: <uuid>, userFirstName: <varchar> , userLastName: <varchar> , display: <varchar> , userProfile: <path> }
 
