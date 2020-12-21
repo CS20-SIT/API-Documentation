@@ -2538,7 +2538,7 @@ Response Body: `none`
  - **Body** :
  ```
 	 {
-		 "pcode" : int
+		 "ccid" : int
 	 }
  ```
  - **Params** : `none`
