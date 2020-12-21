@@ -1422,6 +1422,28 @@ messages: [ { system: <Boolean>,
 { success : true}
 ```
 
+### getSearchResult (ExistedRoom)
+> selectSearchResult
+
+- **URL** : `/chat/selectSearchResult`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `none`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{
+	chatroomid = Integer
+	userid = uuid
+	userid = uuid
+}
+```
+
 ## Group 06
 
 ### **Fetch Leaderboard Ranking**
