@@ -2324,6 +2324,183 @@ Response Body: `none`
 Response Body: `none`
 
 ## Group 09
+
+### get sticker from database
+>show sticker in sticker store
+ - **URL** : `/api/coin/stickers`
+ - **Method** : `GET`
+ - **Auth required** : `none`
+ - **Headers** : `Token`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+```
+[
+	{
+	"id":  int,
+	"title": String,
+	"price":  int,
+	"img":  String,
+	"type":  int
+	}
+]
+```
+
+  
+
+### Get packSticker in payment store 
+
+> show pack sticker each of sticker in payment sticker store
+ - **URL** : `/api/coin/stickers/:id`
+ - **Method** : `GET`
+ - **Auth required** : `none`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"mycoins":  int,
+	"stickers":  [
+			{
+			"stickername":  String,
+			"stickerimg": String,
+			"stickerprice":  int,
+			"stickernumber":  int
+			}
+	]
+}
+ ```
+
+### Show sticker owner in history of user
+
+> show sticker which user has.
+ - **URL** : `/api/coin/stickerOwner`
+ - **Method** : `GET`
+ - **Auth required** : `yes`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"mycoins":  int,
+	"stickers":  [
+			{
+			"stickername":  String,
+			"stickerimg": String,
+			"stickerprice":  int,
+			"stickernumber":  int
+			}
+	]
+}
+ ```
+
+
+### get daily reward 
+
+> check user ever get daily reward
+ - **URL** : `/api/coin/dailyReward`
+ - **Method** : `GET`
+ - **Auth required** : `yes`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"canGet" : boolean
+}
+ ```
+
+### Show coin owner in history
+
+> show coin owner in history
+ - **URL** : `/api/coin/coinOwner`
+ - **Method** : `GET`
+ - **Auth required** : `yes`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"amountofCoin" : int
+}
+ ```
+
+### Buy Sticker
+
+> update amount coin of user and insert sticker that user buy sticker.
+ - **URL** : `/api/coin/buySticker`
+ - **Method** : `POST`
+ - **Auth required** : `yes`
+ - **Body** :
+ ```
+	 {
+		 "stcikerId" : int
+	 }
+ ```
+ - **Params** : `none`
+#### Success Response
+ - Status code : `201`
+ - Response Body: 
+ ```
+	 {
+		"amountofCoin" : int
+	 }
+ ```
+
+### Buy Coupon in Group 2
+
+> update amount coin of user and insert coupon owner that user buy coupon.
+ - **URL** : `/api/coin/buyCoupon`
+ - **Method** : `POST`
+ - **Auth required** : `yes`
+ - **Body** :
+ ```
+	 {
+		 "pcode" : int
+	 }
+ ```
+ - **Params** : `none`
+#### Success Response
+ - Status code : `201`
+ - Response Body: 
+ ```
+	 {
+		"coin" : int
+	 }
+ ```
+
+### Get coin from Edqiz (Group 3)
+
+> if user who gonna winner Rank 1,2,3, User will get coin for reward.
+ - **URL** : `/api/coin/getCoinFromEdqiz`
+ - **Method** : `POST`
+ - **Auth required** : `yes`
+ - **Body** :
+ ```
+	 {
+		 "userIds" : String
+	 }
+ ```
+ - **Params** : `none`
+#### Success Response
+ - Status code : `201`
+ - Response Body: 
+ ```
+	 {
+		"success" : boolean
+	 }
+ ```
+
 ## Group 10
 
 ### Fetch question preview
