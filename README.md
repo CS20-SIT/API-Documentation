@@ -425,8 +425,6 @@
   }
   ```
 
----
-
 ### Admin Logout
 
 > Logout admin from the system
@@ -498,6 +496,161 @@
 - **Status code** : `200`
 
     **Response Body**: `None`
+
+---
+
+### Admin Routes
+
+### Admin Edit Profile
+
+> Edit profile of the admin
+
+- **URL** : `/api/admin/editAdminProfile`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : It can contain empty string
+
+  ```json
+  {
+      "firstname": <String>,
+      "lastname": <String>,
+      "displayname": <String> 
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "firstname": <String>,
+      "lastname": <String>,
+      "displayname": <String> 
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Edit Password
+
+> Edit admin's password
+
+- **URL** : `/api/admin/editPassword`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+      "oldPassword": <String>,
+      "newPassword": <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+    	"success": true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: "Old password doesn't match"
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Edit Profile Picture
+
+> Edit admin's profile picture
+
+- **URL** : `/api/admin/editProfilePic`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : Multipart-formdata of profile_picture file
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+    	"avatarURL": <String of URL>
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
 
 
 ## Group 01
