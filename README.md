@@ -905,6 +905,149 @@ Response Body: `rooms`
 
 ## Group 04
 ## Group 05
+### Fectch Chatlist 
+> getChatlist
+- **URL** : `/chat/getChatlist`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** :`none`
+#### Success Response
+- **Status code** : `200`
+Response Body :
+```
+{chatroomid: <integer>, firstName: <varchar>, roomname: <varchar>, message: <varchar>, sendtime: <timestamp>}
+
+```
+### Get UserProfile
+> getUserprofile
+- **URL** : `/chat/getUserprofile`
+- **Method** : `GET`
+- **Auth required** :`Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+- **Status code** : `200`
+Response Body:
+```
+{          userID:  <uuid>, userFirstName: <varchar>, userLastName: <varchar>, userNickName: <varchar>, profilePicture: <filepath>',}
+```
+
+### Get InvitationList
+> getgetInvitationList
+- **URL** : `/chat/getInvitationList`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params**: `none`
+#### Success Response
+- **Status code** : `200`
+Response Body:
+```
+invitations: [ { invitaionID: <Integer>, chatRoomID: <Integer>, chatRoomName: <varchar>, invitor: <varchar>, profilePicture: <path> }
+
+```
+
+### Get SearchReuslt
+> getSearchResult
+- **URL**: `/chat/getSearchResult
+- **Method**: `GET`
+- **Auth required**: `Yes`
+- **Body**: `none`
+- **Params**: `none`
+#### Success Response
+- **Status code** : `200`
+Response Body:
+```
+users: [ { userID: <uuid>, userFirstName: <varchar> , userLastName: <varchar> , display: <varchar> , userProfile: <path> }
+
+```
+
+### Accept Invitation
+> acceptInvitation
+- **URL**: `/chat/acceptInvitation
+- **Method**: `POST`
+- **Auth required**: `Yes`
+- **Body**: 
+```
+{
+	"chatroomid" : Integer
+	"userid" : uuid
+	" nickname" : String 
+	"sender_color" : String  
+	"receiver_color" : String  
+	"hide" : Boolean
+}	
+```
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : `Success : true`
+
+### Fetch chatroom message
+> getChatroomDetail
+- **URL** : `/chat/getChatroomDetail`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `none`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+```
+chatRoomID: 2,
+chatRoomName: <varchar>,
+            themeColor: {
+                sendColor: <varchar>,
+                recieveColor: <varchar>,
+            },
+            membersID: [uuid,uuid,uuid,uuid],
+messages: [ { system: <Boolean>, sticker: <Boolean>,
+		message: <varchar>,
+		sendTime: <timestamp>,
+		reader: [
+			  {
+				readerID: <uuid>,
+				readTime: <timestamp>,
+			   },
+			   {
+				readerID: <uuid>,
+				readTime: <timestamp>,
+			   },
+			   {
+				readerID: <uuid>,
+				readTime: <timestamp>,
+			   },
+			   ],
+	}
+```
+
+### Get Chatroom picture
+> getChatRoomProfile
+
+- **URL** : `/chat/getChatRoomProfile`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `none`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+```
+{  chatRoomID: <Integer>,  chatRoomProfilePicture: <path>  }
+```
+
+
+
+
+
 ## Group 06
 
 ### **Fetch Leaderboard Ranking**
