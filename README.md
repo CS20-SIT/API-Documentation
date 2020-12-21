@@ -1036,41 +1036,14 @@ Response Body: `rooms`
 -	**Status code** : `200`
 **Response Body**: `rank,score`
 ### Upload
--	**URL** : `/api/kahoot/upload/picture`
+-	**URL** : `/api/kahoot/getRankScorePlayer/:sessionid`
 -	**Method** : `POST`
--	**Auth required** : `Yes`
+-	**Auth required** : `None`
 -	**Parameters** : `None`
 -	**Body** : `None`
 #### Success Response
 -	**Status code** : `None`
 **Response Body**: `result`
-### checkQuizClose
--	**URL** : `/api/kahoot/checkQuizClose/:sessionid`
--	**Method** : `GET`
--	**Auth required** : `None`
--	**Parameters** : `Yes`
--	**Body** : `None`
-#### Success Response
--	**Status code** : `200`
-**Response Body**: `update`
-### fetchExactlyRoomAfterStart
--	**URL** : `/api/kahoot/sessionidAfterStart/:pin`
--	**Method** : `GET`
--	**Auth required** : `None`
--	**Parameters** : `Yes`
--	**Body** : `None`
-#### Success Response
--	**Status code** : `200`
-**Response Body**: `exactlyRoom`
-### fetchExactlyRoomAfterStart
--	**URL** : `/api/kahoot/closeRoom/:sessionid`
--	**Method** : `GET`
--	**Auth required** : `None`
--	**Parameters** : `Yes`
--	**Body** : `None`
-#### Success Response
--	**Status code** : `None`
-**Response Body**: `None`
 
 
 
@@ -1420,28 +1393,6 @@ messages: [ { system: <Boolean>,
 
 ```
 { success : true}
-```
-
-### getSearchResult (ExistedRoom)
-> selectSearchResult
-
-- **URL** : `/chat/selectSearchResult`
-- **Method** : `GET`
-- **Auth required**: `Yes`
-- **Body**:  `none`
-- **Params** : `none`
-#### Success Response
-
-- **Status code** : `200`
-
-**Response Body** : 
-
-```
-{
-	chatroomid = Integer
-	userid = uuid
-	userid = uuid
-}
 ```
 
 ## Group 06
@@ -3528,7 +3479,299 @@ Response Body: `none`
 ​	
 
 ## Group 11
+
+### Get All Course Details
+
+> Return details of each courses
+
+- **URL** : `/api/course/getAllCourse`
+
+- **Method** : `GET`
+
+- **Auth required** : `NO`
+
+- **Parameters** : `None`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  {
+	
+      "courseid": <String>,
+      "coursename": <String>,
+      "coursedescription": <String>,
+      "coursepicture": <String>,
+      "samplevideo": <String>,
+      "price": <integer>,
+      "language": <String>,
+      "havecert": <Boolean>,
+      "ownerid": <String>,
+      "status": <String>,
+      "certpath": <String>,
+      "instructorid": <String>,
+      "userid": <String>,
+      "isverified": <Boolean>,
+      "createat": <String>,
+      "approveat": <Date>,
+      "approver": <String>,
+      "avatar": <String>,
+      "wallpaper": <String>,
+      "biography": <String>,
+      "firstname": <String>,
+      "lastname": <String>,
+      "birthdate": <Date>,
+      "initial": <String>,
+      "phoneno": <String>,
+      "displayname": <String>,
+      "bio": <String>,
+      "updateat": <Date>,
+      "cataid": <String>,
+      "cataname": <String>
+
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+  
+  
+  ### Get Course Description
+
+> Return description of each courses in specific
+
+- **URL** : `/api/course/getCourseFromID`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `id: <integer>`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  {
+	
+      "approveat": <Date>,
+      "approver": <String>,
+      "avatar": <String>,
+      "bio": <String>,
+      "biography": <String>,
+      "birthdate": <Date>,
+      "certpath": <String>,
+      "coursedescription": <String>,
+      "courseid": <String>,
+      "coursename": <String>,
+      "coursepicture": <String>,
+      "createat": <String>,
+      "displayname": <String>,
+      "firstname": <String>,
+      "havecert": <Boolean>,
+      "initial": <String>,
+      "instructorid": <String>,
+      "isOwn": <Boolean>,
+      "isWishlist": <Boolean>,
+      "isverified": <Boolean>,
+      "language": <String>,
+      "lastname": <String>,
+      "ownerid": <String>,
+      "phoneno": <String>,
+      "price": <String>,
+      "samplevideo": <String>,
+      "status": <String>,
+      "updateat": <Date>,
+      "userid": <String>,
+      "wallpaper": <String>
+
+  }
+  ```
+  #### Data Not Found
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      error: <String>
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+  
+  
+  
+  ### Get Video, Material, Quiz
+
+> Return video, material, quiz of each courses
+
+- **URL** : `/api/course/getCourseSectionPart`
+
+- **Method** : `GET`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `id: <integer>`
+
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**: 
+
+  ```json
+  {
+	
+      "courseName": <String>,
+      "id": <String>,
+      "section": <Array>{
+          "ansChoice": <Array>,
+	  "choiceNow": <Array>,
+	  "questionNow": <Integer>,
+	  "sectionName": <String>,
+	  "submitValid": <Integer>,
+	  "submitYet": <Integer>,
+	  "time": <Integer>,
+	  "part": <Array>{
+	      "id": <Integer>,
+	      "partDescript": <String>,
+	      "partName": <String>,
+	      "src": <String>,
+	      "type": <Integer>,
+	      "questionNum": <Array>{
+	          "id": <Integer>,
+	          "question": <String>,
+	          "answer": <Integer>,
+	          "choice": <Array>
+	      }
+	  }
+      }
+
+  }
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+  
+  
+  
 ## Group 12
+### setRequestForms
+
+> Show all support request
+
+- **URL** : `/api/support`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {ticketid: <integer>, title: <varchar>, name: <varchar>, requesttime: <timestamp>, subname: <varchar>, typename: <varchar>}}```
+
+### submitForm
+
+> Create new request
+
+- **URL** : `/api/support/create`
+- **Method** : `POST`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `{name: <varchar>, email: <varchar>, title: <varchar>, content: <varchar>, priority: <integer>,subCat: <varchar>}`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {name: <varchar>, email: <varchar>, title: <varchar>, content: <varchar>, priority: <integer>,subCat: <varchar>}}```
+
+### selectForm
+
+> Show information of each request
+
+- **URL** : `/api/support/:id`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `id: <integer>`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ```json{ data : {ticketid: <integer>, requesttime: <timestamp>, title: <varchar>, description: <varchar>, name: <varchar>, subname: <varchar>, typename: <varchar>}}```
+
+### createAnswer
+
+> Create answer for request
+
+- **URL** : `/api/support`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : ` {id: <uuid>, answer: <string> }`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ success: true }```
+
 
 ### showForum
 
@@ -4552,245 +4795,3 @@ Response Body: `none`
 	**Response Body**: `None`
 	
 ## Group 15
-#### Fetch Wishlist
-> Get Wishlist
-
-- **URL** : '/api/user/getWishlist'
-- **Method** : `GET`
-- **Auth required** : `YES`
-- **Parameters** : `condition : <String>`
-- **Body** : `NONE`
-		
-#### Success Response
-	
-- **Status code** : `200`
-	
-	**Response Body**: {
-	"userid":  String,
-	"courseid": String,
-	"addtime":  datetime,
-	"coursename":  String,
-	"coursepicture":  String,
-	"price" : int ,
-	"firstnname" : String ,
-	"lastname" : String 
-	}
-	
-	
-#### Fetch My Course
-> Get Purchased Courses for User
-
-- **URL** : `/api/user/getMycourse`
-- **Method** : `GET`
-- **Auth required** : `YES`
-- **Parameters** : `condition : <String> , finish : <String> , orderby : <datetime>`
-- **Body** : `NONE`
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response Body**: {  
-	"userid" :  String,
-	"courseid": String,
-	"addtime" : datetime,
-	"lastvisit" : datetime,
-	"isfinished" : boolean,
-	"coursename" : String,
-	"coursepicture" : String,
-	"firstname" : String ,
-	"lastname" : String
-	}
-	
-#### Delete Wishlist
-> Delete Wishlist
-- **URL** : `/api/user/deleteWishlist`
-- **Method** : `POST`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : `NONE`
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response Body** : `NONE`
-	
-#### Fetch Profile
-> Get Profile
-- **URL** : `/api/user/getProfile`
-- **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : `NONE`
-
-#### Success Response
-	
-- **Status code** : `200`
-	
-	**Response Body** : {
-	"avatar" : String,
-	"firstname" : String,
-	"lastname" : String,
-	"email" : String,
-	"birthdate" : datetime,
-	"createat" : datetime,
-	"bio" : String , 
-	"phoneno" : String
-	}
-	
-#### Edit Profile
-> Edit Profile
-- **URL** : `/api/user/postEditProfile`
-- **Method** : `PATCH`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : { `avatar : <String> , firstname : <String> , lastname : <String> , birthdate : <datetime> , bio : <String>` }
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response Body** : `NONE`
-
-#### Fetch CheckPassword
-> Check the password
-- **URL** : `/api/user/getCheckPassword`
-- **Method** :	`GET`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : { `password : <String>} 
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response Body** : {
-	"match" : boolean
-	}
-	
-#### Change Password
-> Change current password into new one
-- **URL** : `/api/user/postNewPassword`
-- **Method** :  `PATCH`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** :  { `password : <String>}
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response Body** : `NONE`
-	
-#### Upload Picture 
-> Upload profile picture
-- **URL** : `/api/user/upload/picture
-- **Method** :  `POST`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : { `files: <pictureFiles> ` }
-
-#### Success Response
-- **Status code** : `200`
-
-	**Response Body** : 
-	{  "linkUrl": String ,
-	   "fieldname" : String 
-	  }
-#### Fetch Certificate
-> Get Certificate
-- **URL** : `/api/user/certificate`
-- **Method** :  `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : `NONE`
-#### Success Response
-	
-- **Status code** : `200`
-	
-	**Response body** : {
-	"firstName" : String,
-	"lastName" : String,
-	"courseid": String,
-	"courseName" : String,
-	"finishDate" : datetime
-	}
-
-#### Download Certificate
-> Download Certificate
-- **URL** : `/api/user/certificate`
-- **Method** :  `POST`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : { `courseid : <String>` }
-
-#### Success Response
-	
-- **Status code** : `200`
-	
-	**Response body** : {
-	"firstname" : String,
-	"lastname" : String,
-	"coursename" : String,
-	"finishdate" : datetime
-	}
-	
-#### Change My Course
-> Change user's course
-- **URL** : `/api/user/postMycourse`
-- **Method** :	`POST`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : { courseid : String }
-
-#### Success Response
-	
-- **Status code** : `200`
-	
-	**Response body** : `NONE`
-		
-#### Check Wishkist
-> Check Wishlist
-- **URL** : `/api/user/checkWishlist`
-- **Method** :	`POST`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : {`courseid : <String>}
-
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response body** : {
-	"checkwishlist" : boolean
-	}
-	
-#### Update Lastvisit Mycourse
-> Update the last visiting time of my course 
-- **URL** : `/api/user/updateLastvisitMyCourse`
-- **Method** :	`PATCH`
-- **Auth required** : `Yes`
-- **Parameters** :  `NONE`
-- **Body** : {`courseid : <String>}
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response body** : `NONE`
-	
-#### Update Finish Mycourse
->
-- **URL** : `/api/user/updateFinishMyCourse`
-- **Method** :	`PATCH`
-- **Auth required** : `Yes`
-- **Parameters** : `NONE`
-- **Body** : {`courseid : <String>}
-
-#### Success Response
-	
-- **Status code** : `200`
-
-	**Response body** : `NONE`
