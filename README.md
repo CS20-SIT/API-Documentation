@@ -1331,7 +1331,7 @@ messages: [ { system: <Boolean>,
 ### changeChatColor
 > changeThemeColor
 
-- **URL** : `/chat/unsendMessage`
+- **URL** : `/chat/changeThemeColor`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
@@ -1354,7 +1354,7 @@ messages: [ { system: <Boolean>,
 ### changeChatRoomName
 > changeChatRoomName
 
-- **URL** : `/chat/unsendMessage`
+- **URL** : `/chat/changeChatRoomName`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
@@ -1375,7 +1375,7 @@ messages: [ { system: <Boolean>,
 ### checkRead
 > readMessage
 
-- **URL** : `/chat/unsendMessage`
+- **URL** : `/chat/readMessage`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
