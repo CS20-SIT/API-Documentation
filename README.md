@@ -1036,41 +1036,14 @@ Response Body: `rooms`
 -	**Status code** : `200`
 **Response Body**: `rank,score`
 ### Upload
--	**URL** : `/api/kahoot/upload/picture`
+-	**URL** : `/api/kahoot/getRankScorePlayer/:sessionid`
 -	**Method** : `POST`
--	**Auth required** : `Yes`
+-	**Auth required** : `None`
 -	**Parameters** : `None`
 -	**Body** : `None`
 #### Success Response
 -	**Status code** : `None`
 **Response Body**: `result`
-### checkQuizClose
--	**URL** : `/api/kahoot/checkQuizClose/:sessionid`
--	**Method** : `GET`
--	**Auth required** : `None`
--	**Parameters** : `Yes`
--	**Body** : `None`
-#### Success Response
--	**Status code** : `200`
-**Response Body**: `update`
-### fetchExactlyRoomAfterStart
--	**URL** : `/api/kahoot/sessionidAfterStart/:pin`
--	**Method** : `GET`
--	**Auth required** : `None`
--	**Parameters** : `Yes`
--	**Body** : `None`
-#### Success Response
--	**Status code** : `200`
-**Response Body**: `exactlyRoom`
-### fetchExactlyRoomAfterStart
--	**URL** : `/api/kahoot/closeRoom/:sessionid`
--	**Method** : `GET`
--	**Auth required** : `None`
--	**Parameters** : `Yes`
--	**Body** : `None`
-#### Success Response
--	**Status code** : `None`
-**Response Body**: `None`
 
 
 
@@ -1420,28 +1393,6 @@ messages: [ { system: <Boolean>,
 
 ```
 { success : true}
-```
-
-### getSearchResult (ExistedRoom)
-> selectSearchResult
-
-- **URL** : `/chat/selectSearchResult`
-- **Method** : `GET`
-- **Auth required**: `Yes`
-- **Body**:  `none`
-- **Params** : `none`
-#### Success Response
-
-- **Status code** : `200`
-
-**Response Body** : 
-
-```
-{
-	chatroomid = Integer
-	userid = uuid
-	userid = uuid
-}
 ```
 
 ## Group 06
@@ -3529,6 +3480,78 @@ Response Body: `none`
 
 ## Group 11
 ## Group 12
+### setRequestForms
+
+> Show all support request
+
+- **URL** : `/api/support`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {ticketid: <integer>, title: <varchar>, name: <varchar>, requesttime: <timestamp>, subname: <varchar>, typename: <varchar>}}```
+
+### submitForm
+
+> Create new request
+
+- **URL** : `/api/support/create`
+- **Method** : `POST`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `{name: <varchar>, email: <varchar>, title: <varchar>, content: <varchar>, priority: <integer>,subCat: <varchar>}`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ data: {name: <varchar>, email: <varchar>, title: <varchar>, content: <varchar>, priority: <integer>,subCat: <varchar>}}```
+
+### selectForm
+
+> Show information of each request
+
+- **URL** : `/api/support/:id`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `id: <integer>`
+- **Body** : `None`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ```json{ data : {ticketid: <integer>, requesttime: <timestamp>, title: <varchar>, description: <varchar>, name: <varchar>, subname: <varchar>, typename: <varchar>}}```
+
+### createAnswer
+
+> Create answer for request
+
+- **URL** : `/api/support`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : ` {id: <uuid>, answer: <string> }`
+
+
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**: ``` json{ success: true }```
+
 
 ### showForum
 
