@@ -3141,6 +3141,45 @@ Response Body: `none`
 
 ​	
 
+### Fetch  top five ranks in the contest
+
+> Get name and score of the top five users in the contest
+
+- **URL** : `/api/grader/getContestRanking`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+      {
+          "displayname" : String
+          "totalscore" : Integer
+      }
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
 ### Submit the question attempt
 
 > Sent the code to the online compiler.
@@ -3176,7 +3215,19 @@ Response Body: `none`
   }
   ```
 
+#### Error Response
 
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
 
 ## Group 11
 ## Group 12
