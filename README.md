@@ -3503,36 +3503,36 @@ Response Body: `none`
   ```json
   {
 	
-      "courseid": <String>,
-      "coursename": <String>,
-      "coursedescription": <String>,
-      "coursepicture": <String>,
-      "samplevideo": <String>,
-      "price": <integer>,
-      "language": <String>,
-      "havecert": <Boolean>,
-      "ownerid": <String>,
-      "status": <String>,
-      "certpath": <String>,
-      "instructorid": <String>,
-      "userid": <String>,
-      "isverified": <Boolean>,
-      "createat": <String>,
-      "approveat": <Date>,
-      "approver": <String>,
-      "avatar": <String>,
-      "wallpaper": <String>,
-      "biography": <String>,
-      "firstname": <String>,
-      "lastname": <String>,
-      "birthdate": <Date>,
-      "initial": <String>,
-      "phoneno": <String>,
-      "displayname": <String>,
-      "bio": <String>,
-      "updateat": <Date>,
-      "cataid": <String>,
-      "cataname": <String>
+      "courseid": String,
+      "coursename": String,
+      "coursedescription": String,
+      "coursepicture": String,
+      "samplevideo": String,
+      "price": integer,
+      "language": String,
+      "havecert": Boolean,
+      "ownerid": String,
+      "status": String,
+      "certpath": String,
+      "instructorid": String,
+      "userid": String,
+      "isverified": Boolean,
+      "createat": String,
+      "approveat": Date,
+      "approver": String,
+      "avatar": String,
+      "wallpaper": String,
+      "biography": String,
+      "firstname": String,
+      "lastname": String,
+      "birthdate": Date,
+      "initial": String,
+      "phoneno": String,
+      "displayname": String,
+      "bio": String,
+      "updateat": Date,
+      "cataid": String,
+      "cataname": String
 
   }
   ```
@@ -3546,7 +3546,7 @@ Response Body: `none`
   ```json
   { 
       success: false, 
-      error: <String>
+      error: String
   }
   ```
   
@@ -3561,7 +3561,7 @@ Response Body: `none`
 
 - **Auth required** : `YES`
 
-- **Parameters** : `id: <integer>`
+- **Parameters** : `id: integer`
 
 - **Body** : `None`
 
@@ -3574,36 +3574,36 @@ Response Body: `none`
   ```json
   {
 	
-      "approveat": <Date>,
-      "approver": <String>,
-      "avatar": <String>,
-      "bio": <String>,
-      "biography": <String>,
-      "birthdate": <Date>,
-      "certpath": <String>,
-      "coursedescription": <String>,
-      "courseid": <String>,
-      "coursename": <String>,
-      "coursepicture": <String>,
-      "createat": <String>,
-      "displayname": <String>,
-      "firstname": <String>,
-      "havecert": <Boolean>,
-      "initial": <String>,
-      "instructorid": <String>,
-      "isOwn": <Boolean>,
-      "isWishlist": <Boolean>,
-      "isverified": <Boolean>,
-      "language": <String>,
-      "lastname": <String>,
-      "ownerid": <String>,
-      "phoneno": <String>,
-      "price": <String>,
-      "samplevideo": <String>,
-      "status": <String>,
-      "updateat": <Date>,
-      "userid": <String>,
-      "wallpaper": <String>
+      "approveat": Date,
+      "approver": String,
+      "avatar": String,
+      "bio": String,
+      "biography": String,
+      "birthdate": Date,
+      "certpath": String,
+      "coursedescription": String,
+      "courseid": String,
+      "coursename": String,
+      "coursepicture": String,
+      "createat": String,
+      "displayname": String,
+      "firstname": String,
+      "havecert": Boolean,
+      "initial": String,
+      "instructorid": String,
+      "isOwn": Boolean,
+      "isWishlist": Boolean,
+      "isverified": Boolean,
+      "language": String,
+      "lastname": String,
+      "ownerid": String,
+      "phoneno": String,
+      "price": String,
+      "samplevideo": String,
+      "status": String,
+      "updateat": Date,
+      "userid": String>,
+      "wallpaper": String
 
   }
   ```
@@ -3615,7 +3615,7 @@ Response Body: `none`
 
   ```json
   { 
-      error: <String>
+      error: String
   }
   ```
 
@@ -3628,7 +3628,7 @@ Response Body: `none`
   ```json
   { 
       success: false, 
-      error: <String>
+      error: String
   }
   ```
   
@@ -3644,7 +3644,7 @@ Response Body: `none`
 
 - **Auth required** : `YES`
 
-- **Parameters** : `id: <integer>`
+- **Parameters** : `id: integer`
 
 - **Body** : `None`
 
@@ -3657,27 +3657,27 @@ Response Body: `none`
   ```json
   {
 	
-      "courseName": <String>,
-      "id": <String>,
-      "section": <Array>{
-          "ansChoice": <Array>,
-	  "choiceNow": <Array>,
-	  "questionNow": <Integer>,
-	  "sectionName": <String>,
-	  "submitValid": <Integer>,
-	  "submitYet": <Integer>,
-	  "time": <Integer>,
-	  "part": <Array>{
-	      "id": <Integer>,
-	      "partDescript": <String>,
-	      "partName": <String>,
-	      "src": <String>,
-	      "type": <Integer>,
-	      "questionNum": <Array>{
-	          "id": <Integer>,
-	          "question": <String>,
-	          "answer": <Integer>,
-	          "choice": <Array>
+      "courseName": String,
+      "id": String,
+      "section": Array{
+          "ansChoice": Array,
+	  "choiceNow": Array,
+	  "questionNow": Integer,
+	  "sectionName": String,
+	  "submitValid": Integer,
+	  "submitYet": Integer,
+	  "time": Integer,
+	  "part": Array{
+	      "id": Integer,
+	      "partDescript": String,
+	      "partName": String,
+	      "src": String,
+	      "type": Integer,
+	      "questionNum": Array{
+	          "id": Integer,
+	          "question": String,
+	          "answer": Integer,
+	          "choice": Array
 	      }
 	  }
       }
