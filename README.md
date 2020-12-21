@@ -425,8 +425,6 @@
   }
   ```
 
----
-
 ### Admin Logout
 
 > Logout admin from the system
@@ -498,6 +496,161 @@
 - **Status code** : `200`
 
     **Response Body**: `None`
+
+---
+
+### Admin Routes
+
+### Admin Edit Profile
+
+> Edit profile of the admin
+
+- **URL** : `/api/admin/editAdminProfile`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : It can contain empty string
+
+  ```json
+  {
+      "firstname": <String>,
+      "lastname": <String>,
+      "displayname": <String> 
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+      "firstname": <String>,
+      "lastname": <String>,
+      "displayname": <String> 
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Edit Password
+
+> Edit admin's password
+
+- **URL** : `/api/admin/editPassword`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : 
+
+  ```json
+  {
+      "oldPassword": <String>,
+      "newPassword": <String>
+  }
+  ```
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+    	"success": true
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: "Old password doesn't match"
+  }
+  ```
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
+
+### Admin Edit Profile Picture
+
+> Edit admin's profile picture
+
+- **URL** : `/api/admin/editProfilePic`
+
+- **Method** : `POST`
+
+- **Auth required** : `YES`
+
+- **Parameters** : `None`
+
+- **Body** : Multipart-formdata of profile_picture file
+
+#### Success Response
+
+- **Status code** : `201`
+
+  **Response Body**: 
+
+  ```json
+  {
+    	"avatarURL": <String of URL>
+  }
+  ```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Body**: 
+
+  ```json
+  { 
+      success: false, 
+      error: <String>
+  }
+  ```
+
+---
 
 
 ## Group 01
@@ -905,6 +1058,343 @@ Response Body: `rooms`
 
 ## Group 04
 ## Group 05
+### Fectch Chatlist 
+> getChatlist
+- **URL** : `/chat/getChatlist`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params** :`none`
+#### Success Response
+- **Status code** : `200`
+
+**Response Body** : 
+```
+{chatroomid: <integer>, firstName: <varchar>, roomname: <varchar>, message: <varchar>, sendtime: <timestamp>}
+
+```
+### Get UserProfile
+> getUserprofile
+- **URL** : `/chat/getUserprofile`
+- **Method** : `GET`
+- **Auth required** :`Yes`
+- **Body** : `none`
+- **Params** : `none`
+#### Success Response
+- **Status code** : `200`
+
+**Response Body** : 
+```
+{          userID:  <uuid>, userFirstName: <varchar>, userLastName: <varchar>, userNickName: <varchar>, profilePicture: <filepath>',}
+```
+
+### Get InvitationList
+> getgetInvitationList
+- **URL** : `/chat/getInvitationList`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Body** : `none`
+- **Params**: `none`
+#### Success Response
+- **Status code** : `200`
+
+**Response Body** : 
+```
+invitations: [ { invitaionID: <Integer>, chatRoomID: <Integer>, chatRoomName: <varchar>, invitor: <varchar>, profilePicture: <path> }
+
+```
+
+### Get SearchReuslt
+> getSearchResult
+- **URL**: `/chat/getSearchResult
+- **Method**: `GET`
+- **Auth required**: `Yes`
+- **Body**: `none`
+- **Params**: `none`
+#### Success Response
+- **Status code** : `200`
+
+**Response Body** : 
+```
+users: [ { userID: <uuid>, userFirstName: <varchar> , userLastName: <varchar> , display: <varchar> , userProfile: <path> }
+
+```
+
+### Accept Invitation
+> acceptInvitation
+- **URL**: `/chat/acceptInvitation
+- **Method**: `POST`
+- **Auth required**: `Yes`
+- **Body**: 
+```
+{
+	"chatroomid" : Integer
+	"userid" : uuid
+	" nickname" : String 
+	"sender_color" : String  
+	"receiver_color" : String  
+	"hide" : Boolean
+}	
+```
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : `Success : true`
+
+### Fetch chatroom message
+> getChatroomDetail
+- **URL** : `/chat/getChatroomDetail`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `none`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+```
+chatRoomID: 2,
+chatRoomName: <varchar>,
+            themeColor: {
+                sendColor: <varchar>,
+                recieveColor: <varchar>,
+            },
+            membersID: [uuid,uuid,uuid,uuid],
+messages: [ { system: <Boolean>,
+                    	sticker: <Boolean>,
+					message: <varchar>,
+					sendTime: <timestamp>,
+					reader: [
+						{
+							readerID: <uuid>,
+							readTime: <timestamp>,
+						},
+						{
+							readerID: <uuid>,
+							readTime: <timestamp>,
+						},
+						{
+							readerID: <uuid>,
+							readTime: <timestamp>,
+						},
+					],
+				}
+```
+
+### Get Chatroom picture
+> getChatRoomProfile
+
+- **URL** : `/chat/getChatRoomProfile`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `none`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+```
+{  chatRoomID: <Integer>,  chatRoomProfilePicture: <path>  }
+```
+
+### decline Invitation
+> declineInvitation
+- **URL** : `/chat/declineInvitation`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	invitationid = Integer 
+	inviteeid = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### hideChatroom
+> hideChatroom
+- **URL** : `/chat/hideChatroom`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	hide = Boolean
+	chatroomid = Integer
+	userid = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### leave Chatroom
+> leaveChatRoom
+
+- **URL** : `/chat/leaveChatRoom`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	userid = uuid
+	chatroomid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### deleteChatRoom
+> deleteChatRoom
+
+- **URL** : `/chat/deleteChatRoom`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	chatroomid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### storeMessage
+> sendMessage
+
+- **URL** : `/chat/sendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	message = String
+	sendtime = timestamo
+	chatroomid = Integer
+	userid = uuid
+	issticker = Boolean
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### unsendMessage
+> unsendMessage
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	messageid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### changeChatColor
+> changeThemeColor
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	sender_color = String
+	receiver_color = String
+	chatroomid = Integer
+	userid = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### changeChatRoomName
+> changeChatRoomName
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	roomname = String
+	chatroomid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### checkRead
+> readMessage
+
+- **URL** : `/chat/unsendMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	message = Integer
+	userid = uuid
+	sendtime = timestamp
+	hide = Boolean
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
 ## Group 06
 
 ### **Fetch Leaderboard Ranking**
@@ -1443,6 +1933,34 @@ Response Body: `rooms`
 
   **Response Body** :`none`
 
+### Delete Course
+
+> Delete Course
+
+- **URL** : `api/instructor/deletecourse`
+
+- **Method** : `POST`
+
+- **Auth required** : `Yes`
+
+- **Body** : 
+
+  ```
+  {
+  	"courseid" : String
+  }
+  ```
+
+  
+
+- **Params** : `none`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body** :`none`
+
 ## Group 08
 ### Fetch Announcement
 > Get Announcement
@@ -1740,7 +2258,7 @@ Response Body: `none`
 #### Success Response
 -	Status code : `200`
 Response Body: `none`
-  
+
 ### Update contest
 >Put contest
 - **URL** : `/grader/econtest`
@@ -1878,6 +2396,183 @@ Response Body: `none`
 Response Body: `none`
 
 ## Group 09
+
+### get sticker from database
+>show sticker in sticker store
+ - **URL** : `/api/coin/stickers`
+ - **Method** : `GET`
+ - **Auth required** : `none`
+ - **Headers** : `Token`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+```
+[
+	{
+	"id":  int,
+	"title": String,
+	"price":  int,
+	"img":  String,
+	"type":  int
+	}
+]
+```
+
+  
+
+### Get packSticker in payment store 
+
+> show pack sticker each of sticker in payment sticker store
+ - **URL** : `/api/coin/stickers/:id`
+ - **Method** : `GET`
+ - **Auth required** : `none`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"mycoins":  int,
+	"stickers":  [
+			{
+			"stickername":  String,
+			"stickerimg": String,
+			"stickerprice":  int,
+			"stickernumber":  int
+			}
+	]
+}
+ ```
+
+### Show sticker owner in history of user
+
+> show sticker which user has.
+ - **URL** : `/api/coin/stickerOwner`
+ - **Method** : `GET`
+ - **Auth required** : `yes`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"mycoins":  int,
+	"stickers":  [
+			{
+			"stickername":  String,
+			"stickerimg": String,
+			"stickerprice":  int,
+			"stickernumber":  int
+			}
+	]
+}
+ ```
+
+
+### get daily reward 
+
+> check user ever get daily reward
+ - **URL** : `/api/coin/dailyReward`
+ - **Method** : `GET`
+ - **Auth required** : `yes`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"canGet" : boolean
+}
+ ```
+
+### Show coin owner in history
+
+> show coin owner in history
+ - **URL** : `/api/coin/coinOwner`
+ - **Method** : `GET`
+ - **Auth required** : `yes`
+ - **Body** : `none`
+ - **Params** : `none`
+#### Success Response
+ - Status code : `200`
+ - Response Body: 
+ ```
+ {
+	"amountofCoin" : int
+}
+ ```
+
+### Buy Sticker
+
+> update amount coin of user and insert sticker that user buy sticker.
+ - **URL** : `/api/coin/buySticker`
+ - **Method** : `POST`
+ - **Auth required** : `yes`
+ - **Body** :
+ ```
+	 {
+		 "stcikerId" : int
+	 }
+ ```
+ - **Params** : `none`
+#### Success Response
+ - Status code : `201`
+ - Response Body: 
+ ```
+	 {
+		"amountofCoin" : int
+	 }
+ ```
+
+### Buy Coupon in Group 2
+
+> update amount coin of user and insert coupon owner that user buy coupon.
+ - **URL** : `/api/coin/buyCoupon`
+ - **Method** : `POST`
+ - **Auth required** : `yes`
+ - **Body** :
+ ```
+	 {
+		 "pcode" : int
+	 }
+ ```
+ - **Params** : `none`
+#### Success Response
+ - Status code : `201`
+ - Response Body: 
+ ```
+	 {
+		"coin" : int
+	 }
+ ```
+
+### Get coin from Edqiz (Group 3)
+
+> if user who gonna winner Rank 1,2,3, User will get coin for reward.
+ - **URL** : `/api/coin/getCoinFromEdqiz`
+ - **Method** : `POST`
+ - **Auth required** : `yes`
+ - **Body** :
+ ```
+	 {
+		 "userIds" : String
+	 }
+ ```
+ - **Params** : `none`
+#### Success Response
+ - Status code : `201`
+ - Response Body: 
+ ```
+	 {
+		"success" : boolean
+	 }
+ ```
+
 ## Group 10
 
 ### Fetch question preview
@@ -2182,8 +2877,11 @@ Response Body: `none`
 	    	"whentime" : Timestamp,
 	    	"displayname" : String,
 	    	"status" : String,
-	    	"conquestionno" : int,
-	    	"language" : String
+	    	"conquestionno" : Integer,
+	    	"language" : String,
+	        "time" : Integer,
+	        "memory" : Integer,
+	        "score" : Integer
 	  	}
 	]
 	```
@@ -2479,7 +3177,7 @@ Response Body: `none`
 
 ​	
 
-### Fetch  contest question details (Unfinish)
+### Fetch  contest question details 
 
 > Get the details of the problem in the contest
 
@@ -2630,19 +3328,16 @@ Response Body: `none`
   **Response Body**:
 
   ```json
-  {
-      "attemptid": Integer,
-      "userid": String,
-      "questionid": Integer,
-      "attempno": Integer,
-      "score": Integer,
-      "status": String,
-      "time": Integer,
-      "memory": Integer,
-      "language": String,
-      "code": String,
-      "whentime": Timestamp
-    },
+  [
+      {
+      	"score": Integer,
+      	"status": String,
+      	"time": Integer,
+      	"memory": Integer,
+      	"displayname": String,
+      	"whentime": Timestamp
+    	},
+  ]
   ```
 
 #### Error Response
@@ -2695,6 +3390,45 @@ Response Body: `none`
 
 ​	
 
+### Fetch  top five ranks in the contest
+
+> Get name and score of the top five users in the contest
+
+- **URL** : `/api/grader/getContestRanking`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `"contestId" : Integer`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+  **Response Body**:
+
+  ```json
+  [
+      {
+          "displayname" : String
+          "totalscore" : Integer
+      }
+  ]
+  ```
+
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
+
 ### Submit the question attempt
 
 > Sent the code to the online compiler.
@@ -2730,7 +3464,19 @@ Response Body: `none`
   }
   ```
 
+#### Error Response
 
+- **Status code** : `400`
+
+  **Response Error** :
+
+  ```json
+  {
+  	"message" : "Error"
+  }
+  ```
+
+​	
 
 ## Group 11
 ## Group 12
@@ -3063,7 +3809,7 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: ```{ data: {packageid: <uuid>, packagename: <char>, instructorid: <uuid> ,discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer> }}```
+    **Response Body**: ```{ package: {packageid: <uuid>, packagename: <char>, instructorid: <uuid> ,firstname: <varchar>, lastname: <varchar>, discount: <numeric>, detail: <varchar>, image: <varchar>, price: <nemeric> }, courseCount: {courseid: <uuid> , coursename: <varchar>, firstname: <varchar>, lastname: <varchar>,coursepicture: <varchar>, avatar: <varchar>}, instructorList:{firstname: <varchar>, lastname: <varchar>, avatar: <varchar>}, courseList:{courseid: <uuid> , coursename: <varchar>, firstname: <varchar>, lastname: <varchar>,coursepicture: <varchar>, avatar: <varchar>}}```
     
 #### Error Response
 
@@ -3482,9 +4228,31 @@ Response Body: `none`
 	```
 	
 ### Fetch Event In Month Year
-> Get the info of the month and year event
+> Search event by month and year
 
 - **URL** : `/api/event/getEventInMonthYear`
+- **Method** : `GET`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `None`
+
+#### Success Response
+
+- **Status code** : `200`
+
+    **Response Body**:
+    
+	```json
+	{
+	   "startdate": date,
+	   "enddate": date
+	}
+	```
+
+### Fetch Event In Month Year
+> Search event by month and year by Admin
+
+- **URL** : `/api/event/getAdminEventInMonthYear`
 - **Method** : `GET`
 - **Auth required** : `Yes`
 - **Parameters** : `None`
@@ -3508,8 +4276,8 @@ Response Body: `none`
 
 - **URL** : `/api/event/getEvent`
 - **Method** : `GET`
-- **Auth required** : `No`
-- **Parameters** : `None`
+- **Auth required** : `Yes`
+- **Parameters** : `"eventid": <Integer>`
 - **Body** : `None`
 
 #### Success Response
@@ -3540,7 +4308,7 @@ Response Body: `none`
 
 - **URL** : `/api/event/getMyCourse`
 - **Method** : `GET`
-- **Auth required** : `No`
+- **Auth required** : `Yes`
 - **Parameters** : `None`
 - **Body** : `None`
 
@@ -3563,7 +4331,7 @@ Response Body: `none`
 - **URL** : `/api/event/getAdminEvent`
 - **Method** : `GET`
 - **Auth required** : `Yes`
-- **Parameters** : `None`
+- **Parameters** : `"eventid": <Integer>`
 - **Body** : `None`
 
 #### Success Response
@@ -3594,7 +4362,7 @@ Response Body: `none`
 - **URL** : `/api/event/getEventbyDate`
 - **Method** : `GET`
 - **Auth required** : `Yes`
-- **Parameters** : `None`
+- **Parameters** : `"date": date`
 - **Body** : `None`
 
 #### Success Response
@@ -3606,28 +4374,6 @@ Response Body: `none`
 	```json
 	{
 	   "title": String,
-	   "startdate": date,
-	   "enddate": date
-	}
-	```
-	
-### Fetch Overview Each Day Event by Admin
-> Get the info of the overview each day event by admin
-
-- **URL** : `/api/event/getAdminEventInMonthYear`
-- **Method** : `GET`
-- **Auth required** : `Yes`
-- **Parameters** : `None`
-- **Body** : `None`
-
-#### Success Response
-
-- **Status code** : `200`
-
-    **Response Body**:
-    
-	```json
-	{
 	   "startdate": date,
 	   "enddate": date
 	}
