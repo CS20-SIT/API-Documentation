@@ -1354,7 +1354,7 @@ messages: [ { system: <Boolean>,
 ### changeChatRoomName
 > changeChatRoomName
 
-- **URL** : `/chat/unsendMessage`
+- **URL** : `/chat/changeChatRoomName`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
@@ -1375,7 +1375,7 @@ messages: [ { system: <Boolean>,
 ### checkRead
 > readMessage
 
-- **URL** : `/chat/unsendMessage`
+- **URL** : `/chat/readMessage`
 - **Method** : `Post`
 - **Auth required**: `Yes`
 - **Body**:  `{
@@ -1394,6 +1394,145 @@ messages: [ { system: <Boolean>,
 ```
 { success : true}
 ```
+
+### checkRead
+> readMessage
+
+- **URL** : `/chat/readMessage`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	message = Integer
+	userid = uuid
+	sendtime = timestamp
+	hide = Boolean
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true}
+```
+
+### uplaodPicture
+> uploadpic
+
+- **URL** : `/chat/uploadpic`
+- **Method** : `Post`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	picture file
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{  file : path }
+```
+
+
+### changeChatroomPicture
+> changeChatRoomProfilePicture
+
+- **URL** : `/chat/changeChatRoomProfilePicture`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	picture = path
+	chatroomid = Integer
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true }
+```
+
+
+
+### addChatRoomMember
+> addChatRoomMember
+
+- **URL** : `/chat/addChatRoomMember`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	chatroomid = Integer
+	userid 1 = uuid
+	suerid 2 = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true }
+```
+
+
+### deleteMember
+> deleteMember
+
+- **URL** : `/chat/deleteMember`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	chatroomid = Integer
+	userid = uuid
+	deleterid = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true }
+```
+
+
+
+### sendStickerMessage
+> sendStickerMessage
+
+- **URL** : `/chat/sendStickerMessage`
+- **Method** : `GET`
+- **Auth required**: `Yes`
+- **Body**:  `{
+	message = Sting
+	chatroomid = Integer
+	userid = uuid
+}`
+- **Params** : `none`
+#### Success Response
+
+- **Status code** : `200`
+
+**Response Body** : 
+
+```
+{ success : true }
+```
+
+
+
 
 ## Group 06
 
