@@ -4470,7 +4470,7 @@ Response Body: `none`
 
 > Edit package
 
-- **URL** : `/api/package:id`
+- **URL** : `/api/package/:id`
 - **Method** : `PUT`
 - **Auth required** : `Yes`
 - **Parameters** : `{packageid: <uuid>}`
