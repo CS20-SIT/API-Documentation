@@ -936,6 +936,7 @@ Response Body:
 Response Body: 
 ```json
 	[{"typename" : String }]	
+
 ```
 
 ### getAdsDetail
@@ -960,7 +961,8 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-}```
+}
+```
 
 ### getPaidWaitingAds
 -	**URL** : `/api/ads/getPaidWaitingAds`
@@ -982,7 +984,8 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-}```
+}
+```
 
 ### getPaidRejectedAds
 -	**URL** : `/api/ads/getPaidRejectedAds`
@@ -994,6 +997,7 @@ Response Body:
 -	Status code : `200`
 Response Body: 
 ```json
+{
 	"status" : String,
 	"adid" : Integer,
 	"adstarttime" : String,
@@ -1004,7 +1008,8 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-}```
+}
+```
 
 ### getPaidApprovedAds
 -	**URL** : `/api/ads/getPaidApprovedAds`
@@ -1026,7 +1031,8 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-}```
+}
+```
 
 ### getAdsTags
 -	**URL** : `/api/ads/getAdsTags`
@@ -1063,7 +1069,7 @@ Response Body:
 	"contactemail" : String,
 	"filelocation" : String
 }]
-``` ...
+``` 
 
 
 ## Group 03
