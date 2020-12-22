@@ -4173,7 +4173,7 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
   
 
 ### createPackage
@@ -4192,13 +4192,13 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `None`
+    **Response Body**: ```{packagename: <char>, instructorid: <uuid>, discount: <numeric>, ispublic: <boolean>, detail: <varchar>, image: <varchar>, cateid: <integer>}```
     
 #### Error Response
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
   
   
   
@@ -4216,13 +4216,13 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: `None`
+    **Response Body**: ```{success: true}```
     
 #### Error Response
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4246,7 +4246,7 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4270,7 +4270,7 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4294,7 +4294,7 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4318,8 +4318,8 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
-
+  **Response Error** : ```{msg: 'Not Found'}```
+  
 
 
 ### getCourses
@@ -4342,7 +4342,7 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4366,7 +4366,31 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
+  
+  
+  
+### getPackagesFromIds
+
+> Get package from ID
+
+- **URL** : `/api/package/packagesFromIds`
+- **Method** : `GET`
+- **Auth required** : `No`
+- **Parameters** : `None`
+- **Body** : `None`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{packageid: <uuid>, packagename: <char>, firstname: <varchar>, lastname: <varchar>, price: <numeric>, image: <varchar>}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : ```{msg: 'Not Found'}```
   
   
   
@@ -4390,7 +4414,7 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4414,7 +4438,7 @@ Response Body: `none`
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4432,13 +4456,37 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: ```{packages: {ispublic: <boolean>} }```
+    **Response Body**: ```{success: true, packages: {ispublic: <boolean>} }```
     
 #### Error Response
 
 - **Status code** : `500`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
+
+
+
+### editPackage
+
+> Edit package
+
+- **URL** : `/api/package:id`
+- **Method** : `PUT`
+- **Auth required** : `Yes`
+- **Parameters** : `{packageid: <uuid>}`
+- **Body** : `{packagename: <char>, discount: <numeric>, detail: <varchar>, image: <varchar>, cateid: <integer>, packageid: <uuid> }`
+
+
+
+- **Status code** : `200`
+
+    **Response Body**: ```{success: true}```
+    
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : ```{msg: 'Unauthorize'}```
 
 
 
@@ -4462,7 +4510,7 @@ Response Body: `none`
 
 - **Status code** : `400`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4480,13 +4528,13 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: ```{ data: {coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>}}```
+    **Response Body**: ```{success: true, data: {coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>}}```
     
 #### Error Response
 
 - **Status code** : `404`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}``
   
   
   
@@ -4510,7 +4558,7 @@ Response Body: `none`
 
 - **Status code** : `400`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
   
   
 
@@ -4529,7 +4577,7 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: ```{ category: {cataname: <varchar>}}```
+    **Response Body**: ```{ success: true, category: {cataname: <varchar>}}```
 
 
 
@@ -4547,13 +4595,67 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: ```{coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>, instructorid: <uuid>, userid: <uuid> , isverified: <boolean>, createat: <timestamp>, approveat: <timestamp>, approver: <uuid>, avatar: <varchar>, wallpaper: <varchar>, biography: <varchar>, firstname: <varchar>, lastname: <varchar>, birthdate: <date>, initial: <varchar>, phoneno: <varchar>, display: <varchar>, bio: <varchar>,updateat: <timestamp>,cataid: <integer>, cataname: <varchar>, courseid: <uuid>}```
+    **Response Body**: ```{success: true, coursename: <varchar>, courseid: <uuid> ,coursedescription: <varchar>, coursepicture: <varchar>, samplevideo: <varchar>, price: <numeric>, languege: <varchar>, havecert: <boolean>, ownerid: <uuid>, status: <varchar>, certpath: <varchar>, instructorid: <uuid>, userid: <uuid> , isverified: <boolean>, createat: <timestamp>, approveat: <timestamp>, approver: <uuid>, avatar: <varchar>, wallpaper: <varchar>, biography: <varchar>, firstname: <varchar>, lastname: <varchar>, birthdate: <date>, initial: <varchar>, phoneno: <varchar>, display: <varchar>, bio: <varchar>,updateat: <timestamp>,cataid: <integer>, cataname: <varchar>, courseid: <uuid>}```
     
 #### Error Response
 
 - **Status code** : `404`
 
-  **Response Error** : `None`
+  **Response Error** : ```{msg: 'Not Found'}```
+
+
+
+### addCourseToWishlist
+
+> Add Course to Wishlist
+
+- **URL** : `/api/course/addCourseToWishlist`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{courseid: <uuid>}`
+
+
+
+- **Status code** : `201`
+
+    **Response Body**: ```{success: true}```
+    
+#### Error Response
+
+- **Status code** : `400`
+
+  **Response Error** : ```{success: false}```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : ```{msg: 'Not Found'}```
+  
+  
+  
+### removeCourseFromWishlist
+
+> Add Course to Wishlist
+
+- **URL** : `/api/course/addCourseToWishlist`
+- **Method** : `POST`
+- **Auth required** : `Yes`
+- **Parameters** : `None`
+- **Body** : `{courseid: <uuid>}`
+
+
+
+- **Status code** : `201`
+
+    **Response Body**: ```{success: true}```
+
+#### Error Response
+
+- **Status code** : `500`
+
+  **Response Error** : ```{msg: 'Not Found'}```
 
 
 
@@ -4571,7 +4673,7 @@ Response Body: `none`
 
 - **Status code** : `201`
 
-    **Response Body**: `None`
+    **Response Body**: ```{success : true}```
 
 
 
@@ -4589,7 +4691,7 @@ Response Body: `none`
 
 - **Status code** : `200`
 
-    **Response Body**: ```{ reviewrate: <numeric>, count:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> }, data:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> } }```
+    **Response Body**: ```{ success : true, reviewrate: <numeric>, count:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> }, data:{ reviewrate: <numeric>, comment: <char>, date: <date>, displayname: <varchar>, avatar: <varchar> } }```
 
 
 
