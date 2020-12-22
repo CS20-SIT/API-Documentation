@@ -925,6 +925,147 @@ Response Body:
 ```
 
 ## Group 02
+### getAdsType
+-	**URL** : `/api/ads/getAdsType`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** :`None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+`
+	[{"typename" : String }]	
+`
+
+### getAdsDetail
+-	**URL** : `/api/ads/getAdsDetail`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** :
+`{
+	"adid" : Integer
+`}
+#### Success Response
+-	Status code : `200`
+Response Body: 
+`{
+	"adid" : uuidv4 ,
+	"adstarttime" : String,
+	"adexpiretime" : String,
+	"filelocation" : String,
+	"ownerid" : uuidv4 ,
+	"firstname" : String,
+	"lastname" : String ,
+	"contactemail" : String,
+	"tagname" : String
+`}
+
+### getPaidWaitingAds
+-	**URL** : `/api/ads/getPaidWaitingAds`
+-	**Method** : `GET`
+-	**Auth required** : `YES`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+`{
+	"status" : String,
+	"adid" : Integer,
+	"adstarttime" : String,
+	"adexpiretime" : String,
+	"filelocation" : String,
+	"ownerid" : uuidv4,
+	"firstname" : String,
+	"lastname" : String ,
+	"contactemail" : String,
+	"tagname" : String
+}`
+
+### getPaidRejectedAds
+-	**URL** : `/api/ads/getPaidRejectedAds`
+-	**Method** : `GET`
+-	**Auth required** : `YES`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+`{
+	"status" : String,
+	"adid" : Integer,
+	"adstarttime" : String,
+	"adexpiretime" : String,
+	"filelocation" : String,
+	"ownerid" : uuidv4,
+	"firstname" : String,
+	"lastname" : String ,
+	"contactemail" : String,
+	"tagname" : String
+}`
+
+### getPaidApprovedAds
+-	**URL** : `/api/ads/getPaidApprovedAds`
+-	**Method** : `GET`
+-	**Auth required** : `YES`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+`{
+	"status" : String,
+	"adid" : Integer,
+	"adstarttime" : String,
+	"adexpiretime" : String,
+	"filelocation" : String,
+	"ownerid" : uuidv4,
+	"firstname" : String,
+	"lastname" : String ,
+	"contactemail" : String,
+	"tagname" : String
+}`
+
+### getAdsTags
+-	**URL** : `/api/ads/getAdsTags`
+-	**Method** : `GET`
+-	**Auth required** : `YES`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+`
+[{
+	"tagname" : String
+}]
+`
+### getAdstoPay
+-	**URL** : `/api/ads/getAdstoPay`
+-	**Method** : `GET`
+-	**Auth required** : `YES`
+-	**Parameters** : `NON`
+-	**Body** : ``
+#### Success Response
+-	Status code : `200`
+Response Body: 
+`
+[{
+	"firstname":String,
+	"lastname":String,
+	"adid": Integer,
+	"type": String,
+	"adstarttime" : String,
+	"adexpiretime" : String,
+	"price" : Double,
+	"contactemail" : String,
+	"filelocation" : String
+}]
+` ...
+
+
 ## Group 03
 ### FetchRoom
 -	**URL** : `/api/kahoot/rooms`
