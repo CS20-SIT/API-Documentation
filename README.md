@@ -1471,7 +1471,7 @@ messages: [ { system: <Boolean>,
 - **Body**:  `{
 	chatroomid = Integer
 	userid 1 = uuid
-	suerid 2 = uuid
+	userid 2 = uuid
 }`
 - **Params** : `none`
 #### Success Response
@@ -1516,7 +1516,7 @@ messages: [ { system: <Boolean>,
 - **Method** : `GET`
 - **Auth required**: `Yes`
 - **Body**:  `{
-	message = Sting
+	message = String
 	chatroomid = Integer
 	userid = uuid
 }`
