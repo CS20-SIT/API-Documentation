@@ -934,9 +934,9 @@ Response Body:
 #### Success Response
 -	Status code : `200`
 Response Body: 
-`
+```json
 	[{"typename" : String }]	
-`
+```
 
 ### getAdsDetail
 -	**URL** : `/api/ads/getAdsDetail`
@@ -944,13 +944,13 @@ Response Body:
 -	**Auth required** : `Yes`
 -	**Parameters** : `None`
 -	**Body** :
-`{
-	"adid" : Integer
-`}
+```json
+	{ "adid" : Integer }
+```
 #### Success Response
 -	Status code : `200`
 Response Body: 
-`{
+```json
 	"adid" : uuidv4 ,
 	"adstarttime" : String,
 	"adexpiretime" : String,
@@ -960,7 +960,7 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-`}
+}```
 
 ### getPaidWaitingAds
 -	**URL** : `/api/ads/getPaidWaitingAds`
@@ -971,7 +971,7 @@ Response Body:
 #### Success Response
 -	Status code : `200`
 Response Body: 
-`{
+```json
 	"status" : String,
 	"adid" : Integer,
 	"adstarttime" : String,
@@ -982,7 +982,7 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-}`
+}```
 
 ### getPaidRejectedAds
 -	**URL** : `/api/ads/getPaidRejectedAds`
@@ -993,7 +993,7 @@ Response Body:
 #### Success Response
 -	Status code : `200`
 Response Body: 
-`{
+```json
 	"status" : String,
 	"adid" : Integer,
 	"adstarttime" : String,
@@ -1004,7 +1004,7 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-}`
+}```
 
 ### getPaidApprovedAds
 -	**URL** : `/api/ads/getPaidApprovedAds`
@@ -1015,7 +1015,7 @@ Response Body:
 #### Success Response
 -	Status code : `200`
 Response Body: 
-`{
+```json
 	"status" : String,
 	"adid" : Integer,
 	"adstarttime" : String,
@@ -1026,7 +1026,7 @@ Response Body:
 	"lastname" : String ,
 	"contactemail" : String,
 	"tagname" : String
-}`
+}```
 
 ### getAdsTags
 -	**URL** : `/api/ads/getAdsTags`
@@ -1037,11 +1037,11 @@ Response Body:
 #### Success Response
 -	Status code : `200`
 Response Body: 
-`
+```json
 [{
 	"tagname" : String
 }]
-`
+```
 ### getAdstoPay
 -	**URL** : `/api/ads/getAdstoPay`
 -	**Method** : `GET`
@@ -1051,7 +1051,7 @@ Response Body:
 #### Success Response
 -	Status code : `200`
 Response Body: 
-`
+```json
 [{
 	"firstname":String,
 	"lastname":String,
@@ -1063,7 +1063,7 @@ Response Body:
 	"contactemail" : String,
 	"filelocation" : String
 }]
-` ...
+``` ...
 
 
 ## Group 03
