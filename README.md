@@ -1371,6 +1371,169 @@ Response Body:
 	"codelimit" : Integer
 }
 ``` 
+### getCouponById
+-	**URL** : `/api/coupon/getCouponById`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `"id":ccid`
+-	**Body** : `None' 
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ 	"ccid": Integer,
+	"ccname": String,
+	"description": String,
+	"discount": Double,
+	"coin_use": Integer,
+	"duration": Integer,
+	"createby": uuidv4,
+	"picture": String,
+	"min_total" : Integer,
+	"isvisible" : boolean,
+	"codelimit" : Integer
+}
+``` 
+
+### updateStatus
+-	**URL** : `/api/coupon/updateStatus`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `"id":ccid<String>, "boo":boolean`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+```json
+Response Body: 
+{ "success": true, id, boo}
+```
+#### Error Response
+-	Status code : `400`
+Response Body: 
+```json
+{ "Error", 400}
+```
+
+### getCodeById
+-	**URL** : `/api/coupon/getCodeById`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `"id" : ccid<String>`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{
+	"pcode" : String
+}
+```
+### getCodeList
+-	**URL** : `/api/coupon/getCodeList`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `"id" : userid<String>`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"pcode" : String,
+		"expiretime": String,
+		"ccname" : String,
+		"isused" : Boolean,
+		"picture" : String
+	}]
+```
+### getUsedCodeList
+-	**URL** : `/api/coupon/getUsedCodeList`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `"id" : userid<String>`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"pcode" : String,
+		"expiretime": String,
+		"ccname" : String,
+		"isused" : Boolean,
+		"picture" : String
+	}]
+```
+### getExpiredCodeList
+-	**URL** : `/api/coupon/getExpiredCodeList`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `"id" : userid<String>`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"pcode" : String,
+		"expiretime": String,
+		"ccname" : String,
+		"isused" : Boolean,
+		"picture" : String
+	}]
+```
+### getPrivateCodeList
+-	**URL** : `/api/coupon/getPrivateCodeList`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `"id" : userid<String>`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"pcode" : String,
+		"expiretime": String,
+		"ccname" : String,
+		"isused" : Boolean,
+		"picture" : String
+	}]
+```
+### registerUemail
+-	**URL** : `/api/udiscount/registerUemail`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : 
+```json
+	{
+		"localPart" : String,
+		"domainName" : String,
+	}
+```
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true}
+``` 
+### getUniversityList
+-	**URL** : `/api/udiscount/getUniversityList`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"universitydomain" : String
+	}]
+```
+
+
 
 ## Group 03
 ### FetchRoom
