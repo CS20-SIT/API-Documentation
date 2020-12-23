@@ -1348,6 +1348,29 @@ Response Body:
 }
 ``` 
 
+### getCouponDetail
+-	**URL** : `/api/coupon/getCouponDetail`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `id : couponid`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ 	"ccid": Integer,
+	"ccname": String,
+	"description": String,
+	"discount": Double,
+	"coin_use": Integer,
+	"duration": Integer,
+	"createby": uuidv4,
+	"picture": String,
+	"min_total" : Integer,
+	"isvisible" : boolean,
+	"codelimit" : Integer
+}
+``` 
 
 ## Group 03
 ### FetchRoom
