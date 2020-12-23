@@ -923,6 +923,7 @@ Response Body:
 ],
 }
 ```
+---
 
 ## Group 02
 ### getAdsType
@@ -1081,8 +1082,8 @@ Response Body:
 Response Body: 
 ```json
 {
- "totalprice" : Integer,
- "count" : Integer
+ 	"totalprice" : Integer,
+ 	"count" : Integer
 }
 ``` 
 
@@ -1136,7 +1137,7 @@ Response Body:
 Response Body: 
 ```json
 {
- "totalprice" : Integer
+ 	"totalprice" : Integer
 }
 ``` 
 
@@ -1166,13 +1167,13 @@ Response Body:
 -	**Parameters** : `NONE`
 -	**Body** : 
 ```json
-{ adid: uuidv4 }
+	{ adid: uuidv4 }
 ``` 
 #### Success Response
 -	Status code : `200`
 Response Body: 
 ```json
-{ "success": true }
+	{ "success": true }
 ``` 
 
 ### upload ads picture
@@ -1182,14 +1183,14 @@ Response Body:
 -	**Parameters** : `NONE`
 -	**Body** : 
 ```json
-{ files: files }
+	{ files: files }
 ``` 
 
 #### Success Response
 -	Status code : `200`
 Response Body: 
 ```json
-{ "success": true }
+	{ "success": true }
 ``` 
 
 ### AddNewAdsBills
@@ -1210,7 +1211,7 @@ Response Body:
 -	Status code : `200`
 Response Body: 
 ```json
-{ "success": true }
+	{ "success": true }
 ``` 
 ### AddAdsTransaction
 -	**URL** : `/api/ads/AddAdsTransaction`
@@ -1240,14 +1241,14 @@ Response Body:
 -	**Parameters** : `NONE`
 -	**Body** : 
 ```json
-{ files: files }
+	{ files: files }
 ``` 
 
 #### Success Response
 -	Status code : `200`
 Response Body: 
 ```json
-{ "success": true }
+	{ "success": true }
 ``` 
 
 ### createCodeForSale
@@ -1343,8 +1344,9 @@ Response Body:
 -	Status code : `200`
 Response Body: 
 ```json
-{ "pcode": String,
-  "codetype" String
+{ 
+	"pcode": String,
+  	"codetype" String
 }
 ``` 
 
@@ -1405,13 +1407,19 @@ Response Body:
 -	Status code : `200`
 ```json
 Response Body: 
-{ "success": true, id, boo}
+{ 
+	"success": true, 
+	"id": Integer, 
+	"boo" : Boolean
+}
 ```
 #### Error Response
 -	Status code : `400`
 Response Body: 
 ```json
-{ "Error", 400}
+{ 
+	"Error": 400
+}
 ```
 
 ### getCodeById
@@ -1516,7 +1524,9 @@ Response Body:
 -	Status code : `200`
 Response Body: 
 ```json
-{ "success": true}
+{ 
+	"success": true
+}
 ``` 
 ### getUniversityList
 -	**URL** : `/api/udiscount/getUniversityList`
@@ -1532,8 +1542,76 @@ Response Body:
 		"universitydomain" : String
 	}]
 ```
-
-
+### getCodeListOfCoin
+-	**URL** : `/api/coin/getCodeListOfCoin
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"id": Integer
+                "name": String
+                "description": String
+                "discount": Integer
+                "coinUse": Integer
+                "endtime": String
+                "picture": String
+                "minTotal": Integer
+                "isvisible": Boolean
+                "codelimit": Integer
+	}]
+```
+### getCodeListOfLPublic
+-	**URL** : `/api/coin/getCodeListOfLPublic
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"id": Integer
+                "name": String
+                "description": String
+                "discount": Integer
+                "coinUse": Integer
+                "endtime": String
+                "picture": String
+                "minTotal": Integer
+                "isvisible": Boolean
+                "codelimit": Integer
+	}]
+```
+### getCodeListOfPublic
+-	**URL** : `/api/coin/getCodeListOfPublic
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+	[{
+		"id": Integer
+                "name": String
+                "description": String
+                "discount": Integer
+                "coinUse": Integer
+                "endtime": String
+                "picture": String
+                "minTotal": Integer
+                "isvisible": Boolean
+                "codelimit": Integer
+	}]
+```
+---
 
 ## Group 03
 ### FetchRoom
