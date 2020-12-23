@@ -1052,8 +1052,8 @@ Response Body:
 -	**URL** : `/api/ads/getAdstoPay`
 -	**Method** : `GET`
 -	**Auth required** : `YES`
--	**Parameters** : `NON`
--	**Body** : ``
+-	**Parameters** : `None`
+-	**Body** : `None`
 #### Success Response
 -	Status code : `200`
 Response Body: 
@@ -1069,6 +1069,283 @@ Response Body:
 	"contactemail" : String,
 	"filelocation" : String
 }]
+``` 
+### getTotalAdsPrice
+-	**URL** : `/api/ads/getTotalAdsPrice`
+-	**Method** : `GET`
+-	**Auth required** : `YES`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{
+ "totalprice" : Integer,
+ "count" : Integer
+}
+``` 
+
+### getMyAds
+-	**URL** : `/api/ads/getMyAds`
+-	**Method** : `GET`
+-	**Auth required** : `YES`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{
+	"firstname":String,
+	"lastname":String,
+	"adid": Integer,
+	"type": Integer,
+	"adstarttime" : String,
+	"adexpiretime" : String,
+	"status" : String,
+	"contactemail" : String,
+	"filelocation" : String,
+	"ownerid" : uuidv4
+}
+``` 
+
+### getAdsToBills
+-	**URL** : `/api/ads/getAdsToBills`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{
+	"adid" : Integer,
+	"amount" : Double
+}
+``` 
+### getBillAdsTotal
+-	**URL** : `/api/ads/getBillAdsTotal`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{
+ "totalprice" : Integer
+}
+``` 
+
+### addAds
+-	**URL** : `/api/ads/addAds`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `NONE`
+-	**Body** : 
+```json
+{
+ 	"type" : String,
+	"adtag" : String,
+	"dstarttime" : String,
+	"adexpiretime" : String,
+	"contactemail" : String,
+	"imglocation" : String,
+	"status" : String,
+	"ownerid" : uuidv4
+}
+``` 
+
+### deleteAds
+-	**URL** : `/api/ads/deleteAds`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `NONE`
+-	**Body** : 
+```json
+{ adid: uuidv4 }
+``` 
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true }
+``` 
+
+### upload ads picture
+-	**URL** : `/api/ads/upload/picture`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `NONE`
+-	**Body** : 
+```json
+{ files: files }
+``` 
+
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true }
+``` 
+
+### AddNewAdsBills
+-	**URL** : `/api/ads/AddNewAdsBills`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : 
+```json
+	{
+	"adlist" : [{ 
+			"adid" : Integer,
+			"price" : Integer
+		   }]
+	}
+``` 
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true }
+``` 
+### AddAdsTransaction
+-	**URL** : `/api/ads/AddAdsTransaction`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : 
+```json
+	{
+	"adlist" : [{ 
+			"adid" : Integer,
+			"amount" : Integer
+		   }]
+	}
+``` 
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true }
+``` 
+
+### upload coupon picture
+-	**URL** : `/api/coupon/upload/picture`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `NONE`
+-	**Body** : 
+```json
+{ files: files }
+``` 
+
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true }
+``` 
+
+### createCodeForSale
+-	**URL** : `/api/coupon/createCodeForSale`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : 
+```json
+{	
+	"codename" : String,
+	"description": String,
+	"discount": Integer,
+	"coinprice": Integer,
+	"duration": Integer,
+	"img": String,
+	"minprice" : Integer,
+	"uselimit" : Integer,
+	"codetype" : String
+}
+``` 
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true }
+``` 
+
+### GetCodeType
+-	**URL** : `/api/coupon/GetCodeType`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+[{
+	"codetype" : String
+}]
+``` 
+
+
+### UseCode
+-	**URL** : `/api/coupon/UseCode`
+-	**Method** : `POST`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : 
+```json
+{ "pcode": String }
+``` 
+
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "success": true}
+``` 
+#### Error Response
+-	Status code : `400`
+Response Body: 
+```json
+{ "success": true,
+  "reason": String 
+}
+``` 
+
+### GetDiscountFromCoupon
+-	**URL** : `/api/coupon/GetDiscountFromCoupon`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : 
+```json
+{ "pcode": String }
+``` 
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "discount": Integer }
+``` 
+
+### getDataFromTable
+-	**URL** : `/api/coupon/getDataFromTable`
+-	**Method** : `GET`
+-	**Auth required** : `Yes`
+-	**Parameters** : `None`
+-	**Body** : `None`
+#### Success Response
+-	Status code : `200`
+Response Body: 
+```json
+{ "pcode": String,
+  "codetype" String
+}
 ``` 
 
 
